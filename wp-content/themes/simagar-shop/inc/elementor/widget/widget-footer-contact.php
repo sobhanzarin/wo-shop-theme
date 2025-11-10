@@ -70,15 +70,15 @@ class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => 'آدرس',
+                        'title' => ' آدرس',
                         'value' => 'تهران، خیابان مثال...',
                     ],
                     [
-                        'title' => 'شماره تماس',
+                        'title' => ' شماره تماس',
                         'value' => '021-12345678',
                     ],
                     [
-                        'title' => 'ایمیل',
+                        'title' => ' ایمیل',
                         'value' => 'info@example.com',
                     ],
                 ],
@@ -150,7 +150,7 @@ class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
             ]
         );
 
-        // تایپوگرافی عنوان
+        // تایپوگرافی عنوان`
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
