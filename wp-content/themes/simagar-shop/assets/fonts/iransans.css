@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "iransans";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url("./iransans/eot/IRANSans.eot") format("eot"),
+    url("./iransans/ttf/IRANSans.ttf") format("truetype"),
+    url("./iransans/woff/IRANSans.woff") format("woff"),
+    url("./iransans/woff2/IRANSans.woff2") format("woff");
+}
+body{
+    font-family: "iransans";
+}
+h1,h2,h3,h4,h5,h6,a,div,li,p{
+    font-family: "iransans" !important;
+}
