@@ -146,10 +146,10 @@ if( class_exists( 'CSF' ) ) {
     'title'  => 'استایل',
     'fields' => array(
 
-      array(
+    array(
       'id'          => 'font-family',
       'type'        => 'select',
-      'title'       => 'انتخاب فونت',
+      'title'       => ' متن انتخاب فونت',
       'placeholder' => 'فونت را انتخاب کنید',
       'options'     => array(
         'iransans'  => 'iransans',
@@ -157,6 +157,7 @@ if( class_exists( 'CSF' ) ) {
       ),
       'default'     => 'iransans'
     ),
+
     array(
     'id'    => 'main-coloer-group',
     'type'  => 'color',

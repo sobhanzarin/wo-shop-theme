@@ -8,7 +8,7 @@
 @font-face {
   font-family: "iransans";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   src: url("./iransans/woff/IRANSans-Light.woff") format("woff"),
     url("./iransans/woff2/IRANSans-Light.woff2") format("woff");
 }

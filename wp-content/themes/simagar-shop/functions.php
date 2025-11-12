@@ -12,13 +12,33 @@ require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/megamenu.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/mega_menu_custom_walker.php');
 require SIMAGAR_THEME_DIR . 'inc/simagar-assets.php';
 
+/* پشتیبانی از تصویر شاخص */
+add_theme_support('post-thumbnails');
+
+/* پشتیبانی از فرمت WebP در آپلود */
+add_filter('upload_mimes', function($types){
+    $types['webp'] = 'image/webp';
+    return $types;
+});
+
+/* اجازه دادن به وردپرس برای نمایش WebP */
+add_filter('file_is_displayable_image', function($result, $path){
+    if ($result === false) {
+        $info = @getimagesize($path);
+        if ($info && $info['mime'] === 'image/webp') {
+            return true;
+        }
+    }
+    return $result;
+}, 10, 2);
+
 add_action( 'user_new_form', 'my_add_user_phone_field' );
 function my_add_user_phone_field( $form_type ) {
     if ( 'add-new-user' !== $form_type ) {
         return;
     }
     ?>
-    <h3>اطلاعات تماس</h3>
+    <h3>اطلاعات تماس</h3>   
     <table class="form-table">
         <tr>
             <th><label for="user_phone">شماره تماس</label></th>

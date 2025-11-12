@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "morabba";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./dana/eot/Dana.eot") format("eot"),
+    url("./dana/ttf/Dana.ttf") format("truetype"),
+    url("./dana/woff/Dana.woff") format("woff"),
+    url("./dana/woff2/Dana.woff2") format("woff");
+}
+@font-face {
+  font-family: "dana";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./dana/eot/Dana-Medium.eot") format("eot"),
+    url("./dana/ttf/Dana-Medium.ttf") format("truetype"),
+    url("./dana/woff/Dana-Medium.woff") format("woff"),
+    url("./dana/woff2/Dana-Medium.woff2") format("woff");
+}
+@font-face {
+  font-family: "morabba";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./dana/eot/Dana-Light.eot") format("eot"),
+    url("./dana/ttf/Dana-Light.ttf") format("truetype"),
+    url("./dana/woff/Dana-Light.woff") format("woff"),
+    url("./dana/woff2/Dana-Light.woff2") format("woff");
+}
+body {
+  font-family: "dana";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+div,
+span,
+li,
+p {
+  font-family: "dana" !important;
+}
