@@ -280,3 +280,19 @@ span.count-cart {
   box-shadow: rgb(0 0 0 / 0%) 0px 10px 15px 0,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
+
+/* Style sinngle-page */
+
+.top-section-post {
+  padding: 24px 0;
+  border-top: 1px solid #3333331a;
+  border-bottom: 1px solid #3333331a;
+}
+.breadcrumbs a {
+  color: #008ecc;
+}
+.breadcrumbs .current-item {
+  font-weight: 700;
+}
+
+/* End Style sinngle-page */
