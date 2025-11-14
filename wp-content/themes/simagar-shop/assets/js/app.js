@@ -23,4 +23,26 @@ jQuery(document).ready(function () {
       $(this).next("ul.sub-menu").animate({ height: "toggle" });
     }
   });
+
+  var sticky_sid = $(".post-sidebar");
+
+  if (sticky_sid.length) {
+    var sideTop = sticky_sid.offset().top;
+
+    $(window).scroll(function () {
+      var currentScroll = $(window).scrollTop();
+
+      if (currentScroll >= sideTop) {
+        sticky_sid.css({
+          position: "fixed",
+          top: "40px",
+        });
+      } else {
+        sticky_sid.css({
+          position: "relative",
+          top: "0",
+        });
+      }
+    });
+  }
 });

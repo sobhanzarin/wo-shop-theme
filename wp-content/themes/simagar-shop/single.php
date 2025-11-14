@@ -1,6 +1,6 @@
 <?php
     get_header(); ?>
-<?php $list_categories = get_categories(); ?>
+
 
 
 <div class="post-single-wrapper">
@@ -50,25 +50,50 @@
                                 <?php the_content(); ?>
                             </div>
                             <?php endwhile; ?>
-
-
-
                         </article>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-4">
                 <div class="post-sidebar">
-                    <div class="category-sidebar">
-                        <span class="title-category">دسته بندی مقالات</span>
+                    <div class="search-single-post">
+                        <form action="" class="search-handler-post">
+                           <input class="form-control post-search-box" type="text" placeholder="جستجو...">
+                            <button class="btn-search-post" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+                    </div>
+                    <div class="category-sidebar box-sidebar mt-3">
+                        <span class="title-box-sidebar">دسته بندی مقالات</span>
                         <div class="list-categories mt-3">
                             <ul>
-                                <li>دسته بندی <span>1</span> </li>
-                                <li>دسته بندی 2</li>
+                            <?php
+                            $list_categories = get_categories();
+                            ?>
+                            <?php foreach ($list_categories as $item) { 
+                                $category_link = get_category_link($item->term_id);
+                                ?>
+                                <li class="d-flex align-items-center justify-content-between"><a href="<?php echo esc_url($category_link); ?>"><?php echo esc_html($item->name); ?></a><span class="count-category d-flex align-items-center justify-content-center"><?php echo intval($item->count);?></span> </li>
+                            <?php } ?>
                             </ul>
                         </div>
                     </div>
-                    
+                    <div class="social-share box-sidebar mt-3">
+                        <span class="title-box-sidebar">اشتراک گذاری</span>
+                        <div class="social-share-wrapper d-flex align-items-center justify-content-center mt-3">
+                            <div class="item-social-share">
+                                <i class="fa-brands fa-square-instagram"></i>
+                                <span>اینستاگرام</span>
+                            </div>
+                             <div class="item-social-share">
+                                <i class="fa-brands fa-square-instagram"></i>
+                                <span>واتساپ</span>
+                            </div>
+                             <div class="item-social-share">
+                                <i class="fa-brands fa-square-instagram"></i>
+                                <span>تلگرام</span>
+                            </div>
+                        </div>
+                    </div>
                     
                 </div>
             </div>
@@ -77,8 +102,5 @@
 
 
 </div>
-
-
-
 
 <?php get_footer(); ?>

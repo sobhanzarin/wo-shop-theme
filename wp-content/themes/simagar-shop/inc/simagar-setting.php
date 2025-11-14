@@ -164,8 +164,8 @@ if( class_exists( 'CSF' ) ) {
     'title' => 'رنگ اصلی سایت',
     'default' => '#008ECC',
     'output' => array(
-      'color' => '.icon-header, .phone-header, .single-post-meta .item-post-meta i ',
-      'background-color' => '.auth-holder',
+      'color' => '.icon-header, .phone-header, .single-post-meta .item-post-meta i, .btn-search-post i',
+      'background-color' => '.auth-holder, span.count-category',
     )
     ),
       ),

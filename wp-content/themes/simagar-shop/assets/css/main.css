@@ -141,7 +141,8 @@ a {
   box-shadow: none !important;
   background-color: #f3f9fb;
 }
-.btn-search-header {
+.btn-search-header,
+.btn-search-post {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -301,11 +302,14 @@ span.count-cart {
   border-radius: 6px;
 }
 .single-post-article,
-.post-sidebar {
+.box-sidebar {
   border-radius: 20px;
   background: #fff;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
   padding: 1.9rem;
+}
+.box-sidebar {
+  border: 1px solid #ececec;
 }
 .single-post-header .title-single-post {
   font-size: 28px;
@@ -314,19 +318,45 @@ span.count-cart {
 .single-post-meta .item-post-meta i {
   font-size: 16px;
 }
-.single-post-content h2 {
+.single-post-content h2,
+.single-post-content h3 {
   color: #333;
   font-size: 26px;
   margin: 14px 0;
+}
+.single-post-content h3 {
+  font-size: 24px;
 }
 .single-post-content p {
   font-size: 15px;
   line-height: 31px;
   color: #666666;
 }
-.category-sidebar span.title-category {
+.box-sidebar span.title-box-sidebar {
   font-size: 16px;
   font-weight: 600;
   color: #333;
+}
+.list-categories ul li {
+  border: 1px solid #f2f3f4;
+  padding: 12px 8px;
+  margin-top: 12px;
+  border-radius: 4px;
+}
+span.count-category {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-handler-post {
+  position: relative;
+}
+.search-handler-post .post-search-box {
+  padding: 15px;
+  border: 1px solid #f2f3f4;
 }
 /* End Style sinngle-page */
