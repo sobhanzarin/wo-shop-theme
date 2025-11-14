@@ -288,11 +288,45 @@ span.count-cart {
   border-top: 1px solid #3333331a;
   border-bottom: 1px solid #3333331a;
 }
-.breadcrumbs a {
+.breadcrumb-section a {
   color: #008ecc;
 }
-.breadcrumbs .current-item {
+.breadcrumb-section .current-item {
   font-weight: 700;
 }
+.single-post-image img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 450px;
+  border-radius: 6px;
+}
+.single-post-article,
+.post-sidebar {
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  padding: 1.9rem;
+}
+.single-post-header .title-single-post {
+  font-size: 28px;
+}
 
+.single-post-meta .item-post-meta i {
+  font-size: 16px;
+}
+.single-post-content h2 {
+  color: #333;
+  font-size: 26px;
+  margin: 14px 0;
+}
+.single-post-content p {
+  font-size: 15px;
+  line-height: 31px;
+  color: #666666;
+}
+.category-sidebar span.title-category {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
 /* End Style sinngle-page */
