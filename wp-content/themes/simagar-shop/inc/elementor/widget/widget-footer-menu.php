@@ -52,7 +52,7 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
         );
 
         $repeater->add_control(
-            'item_icon',
+            'item_icon_class',
             [
                 'label' => "آیکن",
                 'type' => Controls_Manager::ICONS,
@@ -165,28 +165,48 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
 
         $this->end_controls_section();
     }
+protected function render() {
+    $settings = $this->get_settings_for_display();
+    ?>
+    <div class="simagar-footer-menu elementor-widget-icon-list">
+        <ul class="elementor-icon-list-items">
+            <?php foreach ( $settings['links'] as $item ) : ?>
 
-    protected function render() {
-        $settings = $this->get_settings_for_display();
-        ?>
-        <div class="simagar-footer-menu elementor-widget-icon-list">
-            <ul class="elementor-icon-list-items">
-                <?php foreach ( $settings['links'] as $item ) : ?>
-                    <li class="elementor-icon-list-item">
-                        <?php if ( ! empty( $item['item_icon']['value'] ) ) : ?>
-                            <span class="elementor-icon-list-icon">
-                                <?php Icons_Manager::render_icon( $item['item_icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                            </span>
-                        <?php endif; ?>
+                <li class="elementor-icon-list-item d-flex align-items">
+
+                    <?php
+                    // اگر آیکن انتخاب شده بود
+                    if ( ! empty( $item['item_icon']['value'] ) ) {
+
+                        $icon_value = $item['item_icon']['value'];
+
+                        echo '<span class="elementor-icon-list-icon">';
+
+                        // اگر آیکن فونت است (مثل FontAwesome) → رشته است
+                        if ( is_string( $icon_value ) ) {
+                            echo '<i class="' . esc_attr( $icon_value ) . '"></i>';
+                        }
+
+                        // اگر آیکن SVG بود → فعلاً نمایش نده (یا بعداً هندل کنیم)
+                        // چون SVG یک آرایه است و باعث Array to string می‌شود
+
+                        echo '</span>';
+                    }
+                    ?>
+
+                    <a href="<?php echo esc_url( $item['url']['url'] ); ?>">
                         <span class="elementor-icon-list-text">
-                            <a href="<?php echo esc_url( $item['url']['url'] ); ?>">
-                                <?php echo esc_html( $item['title'] ); ?>
-                            </a>
+                            <?php echo esc_html( $item['title'] ); ?>
                         </span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <?php
-    }
+                    </a>
+
+                </li>
+
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php
+}
+
+
 }

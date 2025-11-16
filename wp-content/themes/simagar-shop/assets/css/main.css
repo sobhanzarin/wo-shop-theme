@@ -301,8 +301,9 @@ span.count-cart {
   max-height: 450px;
   border-radius: 6px;
 }
-.single-post-article,
-.box-sidebar {
+.post-content-wrapper article,
+.box-sidebar,
+.form-wrapper {
   border-radius: 20px;
   background: #fff;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
@@ -359,4 +360,119 @@ span.count-category {
   padding: 15px;
   border: 1px solid #f2f3f4;
 }
+/*comment for single-post*/
+.section-title i {
+  font-size: 26px;
+}
+.section-title span {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+.section-title::before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  border-bottom: 2px dotted #ccc;
+  top: 50%;
+  left: 5px;
+  right: 0px;
+}
+.section-title .title {
+  background-color: #fff;
+  position: relative;
+  display: inline-block;
+  padding: 8px 0 8px 16px;
+}
+p.comment-form-comment {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+}
+textarea#comment,
+.comment-form input {
+  border: 2px solid #242b3d4d;
+  border-radius: 6px;
+  margin-top: 8px;
+  width: 100%;
+}
+textarea#comment:focus-visible {
+  border-color: #008ecc !important;
+}
+.comment-form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+.comment-form label .required {
+  color: red;
+}
+p.comment-form-author,
+p.comment-form-email {
+  display: inline-block;
+  width: 49%;
+}
+.comment-form p.logged-in-as {
+  margin: 20px 0;
+}
+.comment-form input#submit {
+  display: inline;
+  color: #fff;
+  padding: 14px 25px;
+  border: 0 none;
+  border-radius: 6px;
+  background-color: #008ecc;
+  width: 160px;
+}
+/* carosel style post related */
+.owl-carousel .owl-item img {
+  height: 200px;
+  border-radius: 12px;
+}
+.post-inner {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 #242b3d1a;
+  padding: 19px 15px;
+  border-radius: 15px;
+  height: auto;
+  margin: 13px;
+}
+.owl-stage-outer {
+  padding: 12px 8px;
+}
+span.title-carosel-item {
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+  display: inline-block;
+}
 /* End Style sinngle-page */
+
+/* Style sinngle-product */
+.woo-brad {
+  padding: 28px 0;
+}
+.woo-brad .woocommerce-breadcrumb {
+  margin-bottom: 0;
+}
+.simagar-single-img .images {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+.simagar-single-img {
+  background-color: #f3f3f3;
+  padding: 16px;
+  border-radius: 12px;
+}
+.simagar-single-img .slick-slide {
+  border: 0 none;
+  background: transparent;
+}
+.simagar-single-img .slick-slide img {
+  border-radius: 15px;
+}
+.simagar-single-img .image-additional .slick-current.slick-current {
+  border: 1px solid #008ecc;
+  border-radius: 15px;
+}
+/* End Style sinngle-product */

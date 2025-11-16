@@ -6,15 +6,13 @@
 <div class="post-single-wrapper">
 
     <div class="container">
-        <div class="breadcrumb-section p-4 mb-3">
-            <?php bcn_display(); ?>
-        </div>
+       <?php get_template_part('/templates/top-section');?>
         <div class="row mb-5">
             <div class="col-lg-9 col-md-8">
                 <div class="col-12 md-3">
                     <div class="post-content-wrapper">
-                        <article class="single-post-article">
-                         <?php while ( have_posts()) : the_post();?>
+                        <?php while ( have_posts()) : the_post();?>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                             <div class="single-post-header mb-5">
                                 <h1 class="title-single-post">
                                     <?php the_title(); ?>
@@ -49,9 +47,28 @@
                             <div class="single-post-content mt-4">
                                 <?php the_content(); ?>
                             </div>
-                            <?php endwhile; ?>
                         </article>
+                        <div class="related-post">
+                            <?php get_template_part("/templates/post/related-post"); ?>
+                        </div>
+                            <div class="comment-post mt-5">
+                                <div class="section-title position-relative">
+                                    <div class="title">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fal fa-comment-alt-lines ms-3"></i>
+                                            <span>دیدگاه ها</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php if(comments_open() || get_comments_number()) : ?>
+                                    <div class="form-wrapper mt-3">
+                                        <?php comments_template(); ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endwhile; ?>
                     </div>
+                    
                 </div>
             </div>
             <div class="col-lg-3 col-md-4">

@@ -121,5 +121,6 @@
         </div>
     </header>
     <?php endif;?>
+    <?php get_template_part('/templates/top-section'); ?>
 
     </div>

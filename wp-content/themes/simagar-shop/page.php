@@ -1,4 +1,5 @@
 <?php get_header(); ?>
-<?php the_content(); ?>
+
+ <?php get_template_part('/templates/top-section');?>
 
 <?php get_footer(); ?>

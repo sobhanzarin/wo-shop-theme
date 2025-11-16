@@ -19,7 +19,6 @@ jQuery(document).ready(function () {
   $(".sum-menu-arrow").click(function (e) {
     e.preventDefault;
     if ($(this).hasClass("fa-angle-left")) {
-      //   $(this).next("ul.sub-menu").show(500);
       $(this).next("ul.sub-menu").animate({ height: "toggle" });
     }
   });
@@ -31,7 +30,6 @@ jQuery(document).ready(function () {
 
     $(window).scroll(function () {
       var currentScroll = $(window).scrollTop();
-
       if (currentScroll >= sideTop) {
         sticky_sid.css({
           position: "fixed",
@@ -45,4 +43,50 @@ jQuery(document).ready(function () {
       }
     });
   }
+  // carosel related in single post
+
+  var carosel = $(".owl-carousel");
+  var slider_items = carosel.data("items");
+  var navigation = carosel.data("navigation");
+  var pagination = carosel.data("pagination");
+  var loop = carosel.data("loop");
+  carosel.owlCarousel({
+    loop: loop,
+    margin: 10,
+    nav: navigation,
+    dots: pagination,
+    rtl: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: slider_items,
+      },
+    },
+  });
+
+  // single-product
+  $(".simagar-single-product .slick-carousel").each(function () {
+    let e = $(this);
+
+    e.slick({
+      arrows: !!e.data("nav"),
+      dots: !!e.data("dots"),
+      autoplay: !!e.data("autoplay"),
+      slidesToShow: e.data("columns"),
+      slidesToScroll: 1,
+      rtl: true,
+      asNavFor: e.data("asnavfor") ? e.data("asnavfor") : "",
+      draggable: true,
+      infinite: true,
+      cssEase: "linear",
+    });
+  });
 });
