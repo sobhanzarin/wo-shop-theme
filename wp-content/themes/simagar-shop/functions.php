@@ -10,19 +10,16 @@ require_once(SIMAGAR_THEME_DIR . 'inc/elementor/simagar-elementor.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/simagar-actions.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/megamenu.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/mega_menu_custom_walker.php');
-require_once(SIMAGAR_THEME_DIR . 'inc/simagar-metabox.php');
+
+require SIMAGAR_THEME_DIR . 'inc/simagar-metabox.php';
 require SIMAGAR_THEME_DIR . 'inc/simagar-assets.php';
+require SIMAGAR_THEME_DIR . 'inc/simagar-woocommerce.php';
 
-/* پشتیبانی از تصویر شاخص */
 add_theme_support('post-thumbnails');
-
-/* پشتیبانی از فرمت WebP در آپلود */
 add_filter('upload_mimes', function($types){
     $types['webp'] = 'image/webp';
     return $types;
 });
-
-/* اجازه دادن به وردپرس برای نمایش WebP */
 add_filter('file_is_displayable_image', function($result, $path){
     if ($result === false) {
         $info = @getimagesize($path);

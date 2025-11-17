@@ -449,6 +449,7 @@ span.title-carosel-item {
 /* End Style sinngle-page */
 
 /* Style sinngle-product */
+
 .woo-brad {
   padding: 28px 0;
 }
@@ -463,6 +464,7 @@ span.title-carosel-item {
   background-color: #f3f3f3;
   padding: 16px;
   border-radius: 12px;
+  height: max-content;
 }
 .simagar-single-img .slick-slide {
   border: 0 none;
@@ -475,3 +477,95 @@ span.title-carosel-item {
   border: 1px solid #008ecc;
   border-radius: 15px;
 }
+.product-sub-title {
+  font-size: 14px;
+}
+span.product_meta_item,
+.title_category {
+  background-color: #008fcc25;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.product_meta_box {
+  padding: 20px 12px;
+  border-top: 1px solid #eeeded;
+  border-bottom: 1px solid #eeeded;
+  margin-bottom: 20px;
+}
+.delivery-alert {
+  border-radius: 12px;
+  background-color: #3bb77d26;
+  width: max-content;
+  padding: 10px 20px;
+}
+.delivery-alert .title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3bb77e;
+  margin-bottom: 10px;
+}
+.delivery-alert .content {
+  font-size: 15px;
+  color: #333;
+}
+.delivery-alert i {
+  color: #3bb77e;
+  font-size: 28px;
+}
+.product-featurse-list .title,
+.woocommerce-product-details__short-description .title {
+  color: #333;
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.product-featurse-list li {
+  font-size: 14px;
+  color: #5b5b5b;
+  font-weight: 500;
+}
+.product-featurse-list ul {
+  padding-right: 16px;
+}
+.woocommerce-product-details__short-description p {
+  font-size: 15px;
+  line-height: 28px;
+  color: #333;
+}
+.simagar-single-info .variations select {
+  background-color: #f3f9fb !important;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 0 none;
+}
+.simagar-single-info .variations select:focuse {
+  border: 0 !important;
+}
+.simagar-product-price {
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  padding: 14px 12px;
+}
+.simagar-product-price .woocommerce-Price-amount {
+  color: #666666;
+  font-size: 18px;
+  font-weight: 600;
+}
+.simagar-single-info .single_add_to_cart_button {
+  background-color: #37c282 !important;
+  font-size: 15px !important;
+  border-radius: 16px !important;
+  padding: 16px 48px !important;
+  box-shadow: 0 10px 25px #37c2823b !important;
+  transition: all 0.3s ease;
+}
+.simagar-single-info .single_add_to_cart_button:hover {
+  background-color: #37c282;
+  box-shadow: 0 4px 25px #37c28278 !important;
+  transition: all 0.3s ease;
+}
+
+/* End Style sinngle-product */

@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $prefix = '_simagar_';
 $sub_title = get_post_meta(get_the_ID(), $prefix . 'product_subtitle', true);
-
 ?>
-<div class="product-title-holder mb-4">
+
+<div class="product-title-holder mb-3">
 	<h1 class="product_title entry-title mb-3"><?php the_title(); ?></h1>
-	<span class="product-sub-title"><?php echo esc_html($sub_title); ?></span>
+	<span class="product-sub-title"><?php echo esc_html($sub_title) ?></span>
 </div>
