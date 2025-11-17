@@ -1,4 +1,7 @@
 <?php
+
+use Elementor\Controls_Manager;
+
 class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
 
     public function get_name(){
@@ -61,6 +64,13 @@ class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $repeater->add_control(
+            'item_icon',
+            [
+                'label' => 'آیکن',
+                'type' => Controls_Manager::ICONS
+            ]
+            );
 
         $this->add_control(
             'contact_items',
@@ -169,12 +179,54 @@ class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
                 'selector' => '{{WRAPPER}} .simagar-footer-contact .contact-value',
             ]
         );
+        $this->add_responsive_control(
+            'icon_spacing',
+            [
+                'label' => 'فاصله آیکن از متن',
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => ['min' => 0, 'max' => 50],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-footer-contact .contact-box .contact-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_color',
+            [
+                'label' => 'رنگ آیکن',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-footer-contact .contact-box .contact-icon i' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .simagar-footer-contact .contact-box .contact-icon' => 'color: inherit !important; border-color: transparent !important;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'icon_size',
+            [
+                'label' => 'اندازه آیکن',
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => ['min' => 10, 'max' => 100],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-footer-contact .contact-box .contact-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
+
     }
 
-    protected function render() {
-        $settings = $this->get_settings_for_display();
+     protected function render() {
+        $settings = $this->get_settings_for_display(); 
 
         if ( empty( $settings['contact_items'] ) ) {
             return;
@@ -190,16 +242,19 @@ class Simagar_Widget_Footer_Contact extends \Elementor\Widget_Base {
                 $link_open  = '<a ' . $this->get_render_attribute_string( 'item_link_' . $this->get_id_int() . '_' . $item['_id'] ) . '>';
                 $link_close = '</a>';
             }
-
+            $icon_value = $item['item_icon']['value'];
             echo '<div class="contact-item">';
                 echo $link_open;
                     echo '<div class="contact-box">';
-                        echo '<span class="contact-title">'.esc_html( $item['title'] ).'</span>';
+                        echo '<span class="contact-icon">'.'<i class="' . esc_attr( $icon_value ) . '"></i>'.'</span>';
+                        echo '<span class="contact-title">'. esc_html( $item['title'] ) .'</span>';
                         echo '<span class="contact-value">'.esc_html( $item['value'] ).'</span>';
                     echo '</div>';
                 echo $link_close;
             echo '</div>';
         }
-        echo '</div>';
+        echo '</div>'; ?>
+
+        <?php 
     }
 }

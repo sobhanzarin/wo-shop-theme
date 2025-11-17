@@ -52,7 +52,7 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
         );
 
         $repeater->add_control(
-            'item_icon_class',
+            'item_icon',
             [
                 'label' => "آیکن",
                 'type' => Controls_Manager::ICONS,
@@ -109,8 +109,8 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
                 'label' => 'رنگ آیکن',
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon i' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon svg' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon i' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon' => 'color: inherit !important; border-color: transparent !important;',
                 ],
             ]
         );
@@ -127,7 +127,6 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: auto;',
                 ],
             ]
         );
@@ -143,7 +142,7 @@ class Simagar_Widget_Footer_Menu extends \Elementor\Widget_Base {
                     'px' => ['min' => 0, 'max' => 50],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .simagar-footer-menu .elementor-icon-list-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -172,7 +171,7 @@ protected function render() {
         <ul class="elementor-icon-list-items">
             <?php foreach ( $settings['links'] as $item ) : ?>
 
-                <li class="elementor-icon-list-item d-flex align-items">
+                <li class="elementor-icon-list-item">
 
                     <?php
                     // اگر آیکن انتخاب شده بود
@@ -182,13 +181,10 @@ protected function render() {
 
                         echo '<span class="elementor-icon-list-icon">';
 
-                        // اگر آیکن فونت است (مثل FontAwesome) → رشته است
                         if ( is_string( $icon_value ) ) {
                             echo '<i class="' . esc_attr( $icon_value ) . '"></i>';
                         }
 
-                        // اگر آیکن SVG بود → فعلاً نمایش نده (یا بعداً هندل کنیم)
-                        // چون SVG یک آرایه است و باعث Array to string می‌شود
 
                         echo '</span>';
                     }
