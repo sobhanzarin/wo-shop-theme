@@ -548,9 +548,11 @@ span.product_meta_item,
   background-color: #f3f3f3;
   border-radius: 12px;
   padding: 14px 12px;
+  position: relative;
 }
-.simagar-product-price .woocommerce-Price-amount {
-  color: #666666;
+.simagar-product-price .woocommerce-Price-amount,
+.woocommerce-variation-price {
+  color: #35b07a;
   font-size: 18px;
   font-weight: 600;
 }
@@ -566,6 +568,134 @@ span.product_meta_item,
   background-color: #37c282 !important;
   box-shadow: 0 4px 25px #37c281b3 !important;
   transition: all 0.3s ease;
+}
+.quantity {
+  display: flex;
+  align-items: center;
+}
+.quantity button {
+  border: 0 none;
+  font-size: 34px;
+  font-weight: 600;
+  color: #333;
+}
+.quantity .qty {
+  border: 0 none !important;
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
+  margin: 0 5px;
+}
+.price-holder {
+  background-color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.simagar-product-price .woocommerce-Price-currencySymbol {
+  color: #333;
+  font-size: 12px;
+}
+.woocommerce-variation.single_variation {
+  background-color: white;
+  border-radius: 14px;
+  padding: 16px 18px;
+  z-index: 11;
+  position: relative;
+}
+span.var-placeholder {
+  position: absolute;
+  top: 30px;
+  left: 23px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 1;
+}
+.woocommerce-variation-availability p.stock {
+  color: #333 !important;
+  position: absolute;
+  left: 160px;
+  top: 21px;
+  width: max-content;
+}
+.simagar-product-thumbs {
+  position: relative;
+}
+.simagar-product-thumbs .simagar-product-meta {
+  position: absolute;
+  top: 30px;
+  right: -24px;
+  z-index: 9;
+}
+.simagar-product-thumbs .simagar-product-meta li {
+  margin-bottom: 15px;
+}
+.simagar-product-thumbs .simagar-product-meta button {
+  color: white;
+  background-color: #212341;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0 none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+.simagar-single-info .woosw-btn,
+.simagar-single-info .woosc-btn {
+  display: none !important;
+}
+/* Style Costum Tabs Woocommerce */
+.wc-tabs::before {
+  display: none !important;
+}
+.wc-tabs li::before,
+.wc-tabs li::after {
+  display: none !important;
+}
+.wc-tabs li {
+  background-color: white !important;
+  border: 1px solid #ececec !important;
+  border-radius: 30px !important;
+  padding: 6px 40px !important;
+  font-size: 16px;
+  margin-left: 14px !important;
+}
+.wc-tabs li.active {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  color: #008ecc !important;
+  border-color: #008fcc7a !important;
+}
+.woocommerce-Tabs-panel--description {
+  background-color: #f8f9fb;
+  padding: 30px !important;
+  border-radius: 30px;
+}
+.woocommerce-Tabs-panel .title-holder i {
+  font-size: 30px;
+}
+.woocommerce-Tabs-panel .title-holder .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px !important;
+}
+.woocommerce-Tabs-panel p {
+  font-size: 16px;
+  line-height: 26px !important;
+  text-align: justify;
+}
+.woocommerce-product-attributes {
+  border: 0 !important;
+}
+.woocommerce-product-attributes td {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 10px 20px !important;
+  font-weight: 600;
+}
+.woocommerce-product-attributes td,
+.woocommerce-product-attributes th {
+  border: 0 none !important;
 }
 
 /* End Style sinngle-product */

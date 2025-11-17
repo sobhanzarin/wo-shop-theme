@@ -82,3 +82,13 @@ function simagar_product_features()
 
     <?php 
 }
+add_action('woocommerce_before_quantity_input_field', 'simagar_display_quantity_plus');
+function simagar_display_quantity_plus()
+{
+    echo '<button type="button" class="plus">+</button>';
+}
+add_action('woocommerce_after_quantity_input_field', 'simagar_display_quantity_minus');
+function simagar_display_quantity_minus()
+{
+    echo '<button type="button" class="minus">-</button>';
+}
