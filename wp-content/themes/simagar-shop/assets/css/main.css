@@ -563,8 +563,8 @@ span.product_meta_item,
   transition: all 0.3s ease;
 }
 .simagar-single-info .single_add_to_cart_button:hover {
-  background-color: #37c282;
-  box-shadow: 0 4px 25px #37c28278 !important;
+  background-color: #37c282 !important;
+  box-shadow: 0 4px 25px #37c281b3 !important;
   transition: all 0.3s ease;
 }
 
