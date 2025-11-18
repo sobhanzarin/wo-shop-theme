@@ -697,5 +697,98 @@ span.var-placeholder {
 .woocommerce-product-attributes th {
   border: 0 none !important;
 }
-
+.section-title-related .title h3 {
+  font-size: 16px;
+}
+.section-title-related .title span {
+  font-size: 22px;
+  font-weight: 600;
+  color: #008ecc;
+}
+.section-title-related .title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 150px;
+  background-color: #f8f9fb;
+  height: 5px;
+  width: calc(100% - 150px);
+}
+.product-entry {
+  box-shadow: 0 4px 16px 0 rgba(36, 43, 61, 0.1);
+  padding: 14px;
+  border-radius: 18px 16px;
+  color: #333;
+  height: 100%;
+  position: relative;
+  overflow: hidden !important;
+}
+.product-entry .product-thumb img {
+  width: 220px !important;
+  height: auto;
+}
+.product-entry .product-content h3 {
+  font-size: 14px;
+  margin-top: 30px;
+  line-height: 26px;
+}
+.product-entry .product-content a {
+  color: #333;
+}
+.product-entry .product-content .price {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  color: #333;
+  margin: 12px 0;
+}
+.product-entry .product-content .woocommerce-Price-amount {
+  color: #35b07a;
+  font-size: 18px;
+  font-weight: 600;
+}
+.product-entry .product-content .woocommerce-Price-currencySymbol {
+  font-size: 13px;
+  color: #333 !important;
+}
+.price ins {
+  text-decoration: none !important;
+}
+.product-hover {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+}
+.product-entry:hover .product-hover {
+  transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+.product-entry .product-hover a {
+  background-color: #37c282 !important;
+  box-shadow: 0 4px 25px #37c281b3 !important;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  margin-left: 5px;
+  padding: 12px 16px;
+}
+.product-entry .product-hover a:hover {
+  color: white;
+}
+.product-entry .product-hover button {
+  background-color: #f8f9fb;
+  padding: 10px;
+  border-radius: 16px;
+  color: #333;
+  font-size: 14px;
+  border: 0 none !important;
+  margin-left: 5px;
+}
 /* End Style sinngle-product */

@@ -7,7 +7,7 @@
     </div>
 <?php else : ?>
     <div>
-         <div class="breadcrumb-section p-4 mb-3">
+         <div class="breadcrumb-section container p-4 mb-3">
                 <?php bcn_display(); ?>
             </div>
     </div>
