@@ -43,7 +43,7 @@
                 <span id="phone-nav-toggle" class="phone-nav-toggle" ><i class="fa-sharp fa-solid fa-bars"></i></span>
             </div>  
             <div class="d-flex align-items-center" >
-                  <a class="ms-4 logo-header" href="<?php echo esc_url(home_url())?>">
+                <a class="ms-4 logo-header" href="<?php echo esc_url(home_url())?>">
                    <img width="<?php echo esc_attr($logo_width)?>px" src="<?php echo esc_url($logo['url']) ?>" alt="<?php echo esc_attr(get_bloginfo('name')) ?>">
                 </a>
                  <div class="search-holder">
@@ -109,10 +109,22 @@
                                 <?php endif; ?>
                             
                             <?php endif; ?>
-                            <a class="me-2 cart-holder" href="">
-                                <span class="count-cart" >1</span>
-                                <i class="icon-header fa-regular fa-cart-shopping"></i>
-                            </a>
+                            <div class="dropdown">
+                                <a class="me-2 cart-holder" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="count-cart" >
+                                        <?php echo WC()->cart->get_cart_contents_count(); ?>
+                                    </span>
+                                    <i class="icon-header fa-regular fa-cart-shopping"></i>
+                                </a>
+                                <div class="dropdown-menu simagar-mini-cart dropdown-menu-end">
+                                    <div class="widget woocommerce widget_shopping_cart">
+                                        <div class="widget_shopping_cart_content">
+                                            <?php woocommerce_mini_cart(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
                           </div>
                     </div>
             </div>

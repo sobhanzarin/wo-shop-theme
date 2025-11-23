@@ -1,4 +1,4 @@
-<?php if(class_exists("WooCommerce") &&  (is_singular('product')) || is_product_tag() || is_product_category()) :?>
+<?php if(class_exists("WooCommerce") &&  (is_singular('product')) || is_product_tag() || is_shop() || is_product_category())  :?>
     <div class="woo-brad">
         <div class="container d-flex align-items-center">
             <i class="fal fa-location-dot ms-2"></i>
@@ -7,8 +7,12 @@
     </div>
 <?php else : ?>
     <div>
-         <div class="breadcrumb-section container p-4 mb-3">
+         <div class="breadcrumb-section container mb-3">
                 <?php bcn_display(); ?>
-            </div>
+                <h1 class="main-title">
+                    <?php simagar_page_title(); ?>
+                </h1>
+                <div class="separator-main-title"></div>
+        </div>
     </div>
 <?php endif; ?>

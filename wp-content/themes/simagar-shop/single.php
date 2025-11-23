@@ -6,7 +6,6 @@
 <div class="post-single-wrapper">
 
     <div class="container">
-       <?php get_template_part('/templates/top-section');?>
         <div class="row mb-5">
             <div class="col-lg-9 col-md-8">
                 <div class="col-12 md-3">

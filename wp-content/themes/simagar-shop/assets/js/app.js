@@ -116,4 +116,11 @@ jQuery(document).ready(function () {
         : value > 0 && input.val(value - parseFloat(step)),
       input.trigger("change");
   });
+
+  // AJAX cart mini header
+  jQuery(function ($) {
+    $(document.body).on("added_to_cart", function () {
+      $("#dropdownMenuButton").dropdown("toggle");
+    });
+  });
 });

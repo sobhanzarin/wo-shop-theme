@@ -1,5 +1,8 @@
 <?php get_header(); ?>
 
- <?php get_template_part('/templates/top-section');?>
-
+<div class="content-section">
+    <div class="container">
+        <?php the_content(); ?>
+    </div>
+</div>
 <?php get_footer(); ?>

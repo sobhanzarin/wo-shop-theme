@@ -165,7 +165,8 @@ if( class_exists( 'CSF' ) ) {
     'default' => '#008ECC',
     'output' => array(
       'color' => '.title_category, span.product_meta_item, .icon-header, .phone-header, .single-post-meta .item-post-meta i, .btn-search-post i',
-      'background-color' => '.auth-holder, span.count-category',
+      'background-color' => '.auth-holder, span.count-category, .simagar-pagination .page-numbers.current, .simagar-pagination li a:hover, .widget_search #searchsubmit',
+      'border-color' => '.simagar-woocommerce-navigation ul li.is-active',
     )
     ),
       ),

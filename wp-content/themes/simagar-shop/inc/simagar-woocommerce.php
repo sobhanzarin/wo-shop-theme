@@ -92,3 +92,28 @@ function simagar_display_quantity_minus()
 {
     echo '<button type="button" class="minus">-</button>';
 }
+add_action('wp_footer', 'cxc_cart_refresh_update_qty', 20);
+function cxc_cart_refresh_update_qty()
+{
+    if (is_cart() || (is_cart() && is_checkout())) {
+        ?>
+		<script>
+			jQuery( function( $ ) {
+
+				let timeout;
+				jQuery('.woocommerce').on('change', 'input.qty', function(){
+                    $('.update-cart').attr("disabled", false);
+                  
+					if ( timeout !== undefined ) {
+						clearTimeout( timeout );
+					}
+					timeout = setTimeout(function() {
+						jQuery("[name='update_cart']").trigger("click");
+                         // trigger cart update
+					}, 1000 ); // 1 second delay, half a second (500) seems comfortable too
+				});
+			} );
+		</script>
+		<?php
+    }
+}

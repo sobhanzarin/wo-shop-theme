@@ -21,13 +21,29 @@ $query = new WP_Query($args);
             <?php while($query->have_posts()) : $query->the_post(); ?>
             <div class="item post-inner">
                 <div id="post-<?php the_ID(); ?>" <?php post_class() ?>>
-                    <div class="post-thumb">
+                    <div class="post-thumb position-relative">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail(); ?>
+                            <div class="post-hover-img simagar-related-meta d-flex align-items-end justify-content-between">
+                               <div class="d-flex align-items-center ms-2">
+                                    <i class="fa-solid fa-list ms-1"></i>
+                                    <span><?php echo get_the_category(get_the_ID())[0]->name    ?></span>
+                                </div>
+                                <div class="d-flex align-items-center ms-2">
+                                    <i class="fa-solid fa-calendar ms-1"></i>
+                                    <span><?php echo get_the_date();?></span>
+                                </div>
+                            </div>
                         </a>
                     </div>
-                    <div>
-                        <span class="title-carosel-item mt-4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                    <div class="simagar-post-content d-flex flex-column justify-content-between">
+                        <span class="title-carosel-item mt-2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                        <div class="simagar-post-excerpt">
+                            <?php if(has_excerpt()) : ?>
+                                <?php the_excerpt(); ?>
+                            <?php endif; ?>
+                        </div>
+                             
                     </div>
                 </div>
             </div>
