@@ -51,3 +51,4 @@ function simagar_cart_count_fragments( $fragments ) {
 
     return $fragments;
 }
+

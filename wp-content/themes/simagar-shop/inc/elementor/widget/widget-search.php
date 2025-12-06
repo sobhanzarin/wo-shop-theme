@@ -93,11 +93,15 @@ class Simagar_Widget_Search extends \Elementor\Widget_Base {
 	protected function render() {
         $setting = $this->get_settings_for_display();
         ?>
-               <div class="search-holder">
-                        <form action="" id="form-search" style="width: <?php echo $setting['width']?>px !important;">
-                            <input class="form-control header-search-box" type="text" placeholder="<?php echo esc_html($setting['placeholder']) ?>" style="padding: <?php echo $setting['paddong'] ?>px ;height: <?php echo $setting['height']?>px ; border-radius: <?php echo $setting['border'] ?> ;background: <?php echo $setting['input-bg'] ?>" >
-                            <button class="btn-search-header" type="submit" style="background: <?php echo $setting['icon-bg'] ?> ;" ><i class="icon-header fa-solid fa-magnifying-glass" style="color: <?php echo $setting['icon-color'] ?> ; font-size: <?php echo $setting['icon-size'] ?>" ></i></button>
+                <div class="search-holder position-relative">
+                        <form action="<?php echo esc_url(home_url('/')) ?>" id="form-search">
+                            <input type="hidden" name="post_type" value="product">
+                            <input name="s" class="form-control header-search-box" type="text" placeholder="<?php echo esc_html($setting['placeholder']) ?>" style="padding: <?php echo $setting['paddong'] ?>px ;height: <?php echo $setting['height']?>px ; border-radius: <?php echo $setting['border'] ?> ;background: <?php echo $setting['input-bg'] ?>">
+                            <button class="btn-search-header" type="submit" style="background: <?php echo $setting['icon-bg'] ?> ;"><i class="icon-header fa-solid fa-magnifying-glass" style="color: <?php echo $setting['icon-color'] ?> ; font-size: <?php echo $setting['icon-size'] ?>"></i></button>
                         </form>
+                        <div id="search-result-holder">
+                            
+                        </div>
                 </div> 
     <?php }
 }

@@ -11,6 +11,7 @@ require_once(SIMAGAR_THEME_DIR . 'inc/simagar-actions.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/megamenu.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/megamenu/mega_menu_custom_walker.php');
 require_once(SIMAGAR_THEME_DIR . 'inc/simagar-functions.php');
+require_once(SIMAGAR_THEME_DIR . 'inc/simagar-ajax.php');
 
 require SIMAGAR_THEME_DIR . 'inc/simagar-metabox.php';
 require SIMAGAR_THEME_DIR . 'inc/simagar-assets.php';

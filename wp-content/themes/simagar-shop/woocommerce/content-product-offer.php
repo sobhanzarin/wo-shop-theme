@@ -23,23 +23,22 @@ global $product;
 if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 	return;
 }
-
 ?>
 <div <?php wc_product_class('', $product); ?>>
 
-<div class="product-entry">
+<div class="product-card">
 	<div class="product-thumb text-center">
 		<?php remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10) ?>
 		<?php do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
 	</div>
-	<div class="product-content text-center">
+	<div class="product-content">
 		<a href="<?php esc_url(the_permalink()) ?>">
 			<h3><?php esc_html(the_title()); ?></h3>
 		</a>
 		<?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
-		<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
-		<!-- <div class="product-hover">
-		</div> -->
+		<div class="product-hover">
+			<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
+		</div>
 	</div>
 </div>
 </div>

@@ -17,7 +17,7 @@ $query = new WP_Query($args);
         </div>
     </div>
     <div>
-        <div class="owl-carousel owl-theme mt-3" data-slider-items="4" data-navigation="true" data-pagination="true" data-loop="true">
+        <div class="owl-carousel owl-theme mt-3" data-slider-items="3" data-navigation="true" data-pagination="true" data-loop="true">
             <?php while($query->have_posts()) : $query->the_post(); ?>
             <div class="item post-inner">
                 <div id="post-<?php the_ID(); ?>" <?php post_class() ?>>

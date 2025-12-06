@@ -19,8 +19,39 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
-?> 
-<div class="simagar-archiv-products mb-5">
+$terms = get_terms([
+    'taxonomy'   => 'product_cat',
+    'hide_empty' => false,
+    'exclude'    => [], 
+]); ?>
+
+	<div class="container">
+		<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="6" data-navigation="true" data-pagination="true" data-loop="false">
+			<?php foreach($terms as $term): ?>
+				<?php if($term->slug === 'uncategorized') continue; ?>
+				<?php 
+				    $thumbnail_id = get_term_meta($term->term_id, 'thumbnail_id', true);
+					$image_url = wp_get_attachment_url($thumbnail_id);
+				?>
+				<div class="category-box d-flex flex-column align-items-center">
+					<img src="<?php echo esc_url($image_url) ?>" alt="<?php echo esc_attr($term->name) ?>">
+					<div class="title-category my-3">
+						<span><?php echo esc_html($term->name) ?></span>
+					</div>
+					<div class="count-product d-flex align-items-center">
+						تعداد محصولات: 
+						<span class="d-flex align-items-center justify-content-center me-2">
+							<?php echo esc_html($term->count) ?>
+						</span>
+					</div>
+			</div>
+			<?php endforeach; ?>
+			
+	 	</div>
+	</div>
+ 
+
+<div class="simagar-archiv-products my-5">
 	<div class="container">
 		<?php if(woocommerce_product_loop()) :  ?>
 		<div class="row">
@@ -95,7 +126,6 @@ get_header( 'shop' );
 	</div>
 
 </div>
-
 
 <?php
 get_footer( 'shop' );

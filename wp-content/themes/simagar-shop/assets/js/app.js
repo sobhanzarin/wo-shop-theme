@@ -1,3 +1,30 @@
+function initOwlCarousel() {
+  var carosel = jQuery(".owl-carousel");
+
+  carosel.each(function () {
+    var owl = jQuery(this);
+    var slider_items = owl.data("slider-items");
+    var navigation = owl.data("navigation");
+    var pagination = owl.data("pagination");
+    var loop = owl.data("loop");
+
+    if (!owl.hasClass("owl-loaded")) {
+      owl.owlCarousel({
+        loop: loop,
+        margin: 10,
+        nav: navigation,
+        dots: pagination,
+        rtl: true,
+        responsive: {
+          0: { items: 1 },
+          400: { items: 1 },
+          600: { items: 2 },
+          1000: { items: slider_items },
+        },
+      });
+    }
+  });
+}
 jQuery(document).ready(function () {
   $("#btn-auth, #close-modal").click(function (e) {
     e.preventDefault();
@@ -43,34 +70,40 @@ jQuery(document).ready(function () {
       }
     });
   }
-  // carosel related in single post
+  initOwlCarousel();
 
-  var carosel = $(".owl-carousel");
-  var slider_items = carosel.data("items");
-  var navigation = carosel.data("navigation");
-  var pagination = carosel.data("pagination");
-  var loop = carosel.data("loop");
-  carosel.owlCarousel({
-    loop: loop,
-    margin: 10,
-    nav: navigation,
-    dots: pagination,
-    rtl: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 1,
-      },
-      600: {
-        items: 3,
-      },
-      1000: {
-        items: slider_items,
-      },
-    },
-  });
+  // carosel related in single post
+  // var carosel = $(".owl-carousel");
+
+  // carosel.each(function () {
+  //   var owl = $(this);
+  //   var slider_items = owl.data("slider-items");
+  //   var navigation = owl.data("navigation");
+  //   var pagination = owl.data("pagination");
+  //   var loop = owl.data("loop");
+
+  //   owl.owlCarousel({
+  //     loop: loop,
+  //     margin: 10,
+  //     nav: navigation,
+  //     dots: pagination,
+  //     rtl: true,
+  //     responsive: {
+  //       0: {
+  //         items: 1,
+  //       },
+  //       400: {
+  //         items: 1,
+  //       },
+  //       600: {
+  //         items: 2,
+  //       },
+  //       1000: {
+  //         items: slider_items,
+  //       },
+  //     },
+  //   });
+  // });
 
   // single-product
   $(".simagar-single-product .slick-carousel").each(function () {
@@ -123,4 +156,35 @@ jQuery(document).ready(function () {
       $("#dropdownMenuButton").dropdown("toggle");
     });
   });
+
+  // Ajax سرچ
+  $(".header-search-box").on("keydown", function () {
+    var data_val = $(this).val();
+    if (data_val.length > 2) {
+      $.ajax({
+        url: SIMAGAR_DATA.ajax_url,
+        type: "post",
+        data: {
+          action: "simagar_search_ajax",
+          keyword: data_val,
+        },
+        success: function (data) {
+          $("#search-result-holder").html(data);
+          $("#search-result-holder").show();
+        },
+      });
+    } else {
+      $("#search-result-holder").hide();
+    }
+  });
+});
+
+// 2️⃣ المنتور ادیتور
+jQuery(window).on("elementor/frontend/init", function () {
+  elementorFrontend.hooks.addAction(
+    "frontend/element_ready/global",
+    function () {
+      initOwlCarousel();
+    }
+  );
 });

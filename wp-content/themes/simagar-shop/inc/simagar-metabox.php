@@ -8,14 +8,21 @@ function simagar_metaboxes()
 {
     $prefix = '_simagar_';
 
-    $product_box = new_cmb2_box( array(
-            'id' => 'product_metabox',
-            'title' => 'تنظیمات اضافی محصول',
-            'object_types' => array('product',),
-            'context' => 'normal',
-            'priority' => 'high',
-            'show_names' => true,
+   $product_box = new_cmb2_box( array(
+         'id' => 'product_metabox',
+         'title' => 'تنظیمات اضافی محصول',
+         'object_types' => array('product',),
+         'context' => 'normal',
+         'priority' => 'high',
+         'show_names' => true,
         ));
+
+   $product_box->add_field(array(
+        'name' => 'پیشنهاد شگفت انگیز',
+        'desc' => 'با فعال کردن این گزینه، محصول در اسلایدر شگفت انگیز مشاهده نمود.',
+        'id' => $prefix . 'product_special',
+        'type' => 'checkbox'
+     ));
      $product_box->add_field(array(
         'name' => 'زیر عنوان',
         'desc' => 'شما میتوانید در این بخش عنوان لاتین محصول را وارد نمایید',

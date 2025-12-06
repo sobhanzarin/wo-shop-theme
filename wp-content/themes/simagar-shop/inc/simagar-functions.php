@@ -138,3 +138,21 @@ add_filter('body_class', function($classes) {
     }
     return $classes;
 });
+
+
+function simagar_get_terms_select($args)
+{
+    $terms = get_terms($args);
+    $options = [];
+    foreach($terms as $term) {
+        $options[$term->term_id] = $term->name;
+    }
+    return $options;
+
+}
+
+function allow_svg_upload($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'allow_svg_upload');

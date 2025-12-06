@@ -46,11 +46,15 @@
                 <a class="ms-4 logo-header" href="<?php echo esc_url(home_url())?>">
                    <img width="<?php echo esc_attr($logo_width)?>px" src="<?php echo esc_url($logo['url']) ?>" alt="<?php echo esc_attr(get_bloginfo('name')) ?>">
                 </a>
-                 <div class="search-holder">
-                        <form action="" id="form-search">
-                            <input class="form-control header-search-box" type="text" placeholder="دنبال چی میگردید؟">
+                 <div class="search-holder position-relative">
+                        <form action="<?php echo esc_url(home_url('/')) ?>" id="form-search">
+                            <input type="hidden" name="post_type" value="product">
+                            <input name="s" class="form-control header-search-box" type="text" placeholder="دنبال چی میگردید؟">
                             <button class="btn-search-header" type="submit"><i class="icon-header fa-solid fa-magnifying-glass"></i></button>
                         </form>
+                        <div id="search-result-holder">
+                            
+                        </div>
                 </div> 
 
               </div>
