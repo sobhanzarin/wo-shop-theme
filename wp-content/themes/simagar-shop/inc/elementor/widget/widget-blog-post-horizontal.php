@@ -2,18 +2,18 @@
 
 use Elementor\Controls_Manager;
 
-class Simagar_Widget_Products extends \Elementor\Widget_Base {
+class Simagar_Widget_Blog_Horizontal extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'products';
+        return 'blog-post-horizontal';
     }
 
     public function get_title() {
-        return 'نمایش محصولات ';
+        return 'نمایش مقالات افقی';
     }
 
     public function get_icon() {
-        return 'eicon-posts-group';
+        return 'eicon-post-list';
     }
 
     public function get_categories() {
@@ -23,9 +23,9 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
     protected function register_controls() {
 
         $this->start_controls_section(
-            'products_section',
+            'blog_horizontal_section',
             [
-                'label' => 'تنظیمات محصولات',
+                'label' => 'تنظیمات مقالات افقی',
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -34,7 +34,7 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 			'count',
 			[
 				'type' => Controls_Manager::SLIDER,
-				'label' => 'تعداد محصولات',
+				'label' => ' تعداد مقالات افقی',
 				'range' => [
 					'no' => [
 						'min' => 1,
@@ -56,11 +56,8 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 				'options' => [
 					'col-md-12' => 'تک ستونه',
 					'col-md-6' => 'دو ستونه',
-					'col-md-4' => 'سه ستونه',
-					'col-md-3' => 'چهار ستونه',
-					'col-md-2' => 'شش ستونه',
 				],
-				'default' => 'col-md-4',
+				'default' => 'col-md-6',
 			]
 		);
 
@@ -71,7 +68,7 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
                 'multiple' => true,
 				'label' => 'دسته بندی',
 				'options' =>simagar_get_terms_select([
-                    'taxonomy' => 'product_cat',
+                    'taxonomy' => 'category',
                     'hide_empty' => false,
                 ]),
 			]
@@ -95,13 +92,13 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 protected function render() {
     $settings = $this->get_settings_for_display();
     
-    $products_query =  new WP_Query([
-        'post_type' => 'products',
+    $blog_query =  new WP_Query([
+        'post_type' => 'post',
         'posts_per_page' => $settings['count']['size'],
         'order' => $settings['order'],
         'tax_query' => [
             [
-            'taxonomy' => 'products_cat',
+            'taxonomy' => 'category',
             'field' => 'term_id',
             'terms' => $settings['category'],
             ]
@@ -110,9 +107,9 @@ protected function render() {
     ?>
      
     <div class="row">
-            <?php while($products_query->have_posts()) : $products_query->the_post() ?>
+            <?php while($blog_query->have_posts()) : $blog_query->the_post() ?>
             <div class="col-12 <?php echo esc_attr($settings['colums']) ?>">
-                <?php get_template_part("templates/post/grid"); ?>
+                <?php get_template_part("templates/post/grid-horizontal"); ?>
             </div>
             <?php endwhile;
              wp_reset_postdata();

@@ -42,3 +42,28 @@ function simagar_search_ajax()
 
 add_action('wp_ajax_simagar_search_ajax', 'simagar_search_ajax');
 add_action('wp_ajax_nopriv_simagar_search_ajax', 'simagar_search_ajax');
+
+function simagar_filter_product(){
+    $category = $_POST['category'];
+    $product_query =  new WP_Query([
+        'product_cat' => $category,
+        'post_type' => 'product',
+        'posts_per_page' => 5,
+        'order' => "DESC",
+    ]);
+    if($product_query->have_posts()){
+        while($product_query->have_posts()) : $product_query->the_post();?>
+               <div class="col-12 col-md-3">
+                   <?php get_template_part("woocommerce/content-product"); ?>
+               </div>
+           <?php endwhile; 
+    }else{ 
+    ?>  
+    <p>آیتمی یافت نشد...</p>
+    
+    <?php
+    }
+    die();
+}
+add_action('wp_ajax_simagar_filter_product', 'simagar_filter_product');
+add_action('wp_ajax_nopriv_simagar_filter_product', 'simagar_filter_product');

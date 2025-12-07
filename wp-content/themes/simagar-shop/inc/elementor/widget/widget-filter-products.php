@@ -2,18 +2,18 @@
 
 use Elementor\Controls_Manager;
 
-class Simagar_Widget_Products extends \Elementor\Widget_Base {
+class Simagar_Widget_Filter_Products extends \Elementor\Widget_Base {
 
     public function get_name() {
-        return 'products';
+        return 'filter_products';
     }
 
     public function get_title() {
-        return 'نمایش محصولات ';
+        return 'نمایش تب محصولات ';
     }
 
     public function get_icon() {
-        return 'eicon-posts-group';
+        return 'eicon-product-tabs';
     }
 
     public function get_categories() {
@@ -23,9 +23,9 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
     protected function register_controls() {
 
         $this->start_controls_section(
-            'products_section',
+            'filter_products_section',
             [
-                'label' => 'تنظیمات محصولات',
+                'label' => 'تنظیمات تب محصولات',
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -45,6 +45,14 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 				'default' => [
 					'size' => 3,
 				],
+			]
+		);
+        $this->add_control(
+			'title',
+			[
+				'type' => Controls_Manager::TEXT,
+				'label' => 'عنوان',
+				'default' => 'محصولات پیشنهادی'
 			]
 		);
 
@@ -95,30 +103,50 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 protected function render() {
     $settings = $this->get_settings_for_display();
     
-    $products_query =  new WP_Query([
-        'post_type' => 'products',
+    $product_query =  new WP_Query([
+        'post_type' => 'product',
         'posts_per_page' => $settings['count']['size'],
         'order' => $settings['order'],
         'tax_query' => [
             [
-            'taxonomy' => 'products_cat',
-            'field' => 'term_id',
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
             'terms' => $settings['category'],
             ]
         ] 
         ]);
     ?>
      
-    <div class="row">
-            <?php while($products_query->have_posts()) : $products_query->the_post() ?>
-            <div class="col-12 <?php echo esc_attr($settings['colums']) ?>">
-                <?php get_template_part("templates/post/grid"); ?>
-            </div>
-            <?php endwhile;
-             wp_reset_postdata();
-            ?>
-
+  <div class="simagar-filter-products">
+    <div class="categories d-flex align-items-center justify-content-between mb-3">
+        <div>
+            <span class="title"><?php echo esc_html($settings['title'])?></span>
+        </div>
+        <ul class="d-flex align-items-center">
+            <li data-product-cate="<?php 
+            foreach($settings['category'] as $cat){
+                echo get_term_by('id', $cat, 'product_cat')->slug . ',';
+            }
+            ?>" class="category-item select">همه دسته ها</li>
+            <?php if($settings['category']) : ?>
+                <?php foreach ($settings['category'] as $cat) : ?>
+                    <li data-product-cate="<?php echo esc_html(get_term_by('id', $cat, 'product_cat')->slug)?>" class="category-item"><?php echo esc_html(get_term_by('id', $cat, 'product_cat')->name)?></li>
+            
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </ul>
     </div>
+    <div class="row product-item ">
+        <?php while($product_query->have_posts()) : $product_query->the_post();?>
+            <div class="col-12 <?php echo esc_attr($settings['colums']) ?>">
+                <?php get_template_part("woocommerce/content-product"); ?>
+            </div>
+        <?php endwhile; 
+        wp_reset_postdata();
+        ?>
+        
+    </div>
+  </div>
 
     <?php
 }

@@ -216,12 +216,12 @@ protected function render() {
     'hide_empty' => false,
     'exclude'    => [], 
     ]); 
-    $active_navigation = ($settings['active_navigation'] === 'no') ? false : true;
-    $active_pagination = ($settings['active_pagination'] === 'no') ? false : true;
-    $active_loop = ($settings['active_pagination'] === 'no') ? false : true;
+    $is_active_navigation = ($settings['active_navigation'] === 'no') ? false : true;
+    $is_active_pagination = ($settings['active_pagination'] === 'no') ? false : true;
+    $is_active_loop = ($settings['active_pagination'] === 'no') ? false : true;
     ?>
 <div class="container">
-	<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="<?php echo $active_navigation ?>" data-pagination="<?php ($settings['active_pagination'] === 'no') ? false : true  ?>" data-loop="<?php echo ($settings['active_loop'] === 'no') ? false : true ?>">
+	<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="<?php echo $is_active_navigation ?>" data-pagination="<?php echo $is_active_pagination  ?>" data-loop="<?php echo $is_active_loop ?>">
 		<?php foreach($terms as $term): ?>
 			<?php if($term->slug === 'uncategorized') continue; ?>
 			<?php 

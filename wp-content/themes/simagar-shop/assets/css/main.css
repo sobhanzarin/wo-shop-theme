@@ -457,15 +457,42 @@ p.comment-form-email {
   border-radius: 12px;
   position: relative;
 }
-
-.post-inner {
+.post-horizontal .horizontal-title h2 {
+  font-size: 16px;
+  line-height: 28px;
+  color: #333;
+}
+.post-horizontal .horizontal-excerpt p {
+  font-size: 14px;
+  line-height: 22px;
+  text-align: justify;
+}
+.post-horizontal .horizontal-img img {
+  border-radius: 6px;
+}
+.horizontal-footer {
+  border-top: 1px solid #0000000f;
+  padding-top: 18px;
+}
+.post-inner,
+.post-horizontal {
   background-color: #fff;
   box-shadow: 0 4px 8px 0 #242b3d1a;
-  padding: 23px 18px;
+  padding: 18px 14px;
   border-radius: 15px;
   height: auto;
   margin: 8px;
   transition: all 0.3s ease;
+}
+.btn-post-horizontal {
+  font-size: 14px;
+  font-weight: 600;
+}
+.horizontal-footer-info,
+.simagar-post-footer {
+  font-size: 12px;
+  color: #868686;
+  font-weight: 600;
 }
 .post-thumb {
   border-radius: 15px;
@@ -818,10 +845,11 @@ span.var-placeholder {
 .simagar-category-shop .category-box img {
   width: 50% !important;
 }
-.simagar-archiv-products .product-entry .product-thumb img {
+.simagar-archiv-products .product-entry .product-thumb img,
+.simagar-filter-products img {
+  border-radius: 8px !important;
   width: 220px !important;
   height: auto;
-  border-radius: 8px;
 }
 .product-entry .product-content h3 {
   font-size: 14px;
@@ -856,38 +884,15 @@ span.var-placeholder {
 .price ins {
   text-decoration: none !important;
 }
-/* .product-hover {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  background-color: white;
-  padding: 20px;
-} */
-/* .product-entry:hover .product-hover {
-  transition: all 0.3s ease;
-  opacity: 1;
-  visibility: visible;
-} */
-/* .product-entry:hover .product-content h3 {
-  transform: translatey(-25px);
-  transition: all 0.3s ease;
-} */
 .product-entry .add_to_cart_button {
   background-color: #37c282 !important;
-  box-shadow: 0 4px 16px #37c281b3 !important;
+  box-shadow: 0 4px 12px #37c2818f !important;
   border-radius: 6px !important;
   color: #fff !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   margin-left: 5px;
   padding: 12px 16px;
 }
-/* .product-entry .product-hover a:hover {
-  color: white;
-} */
 .product-entry button.woosc-btn,
 button.woosw-btn {
   background-color: #f8f9fb;
@@ -1409,19 +1414,24 @@ a.added_to_cart {
   font-weight: 600;
   color: #333;
 }
-.simagar-offer-slider .slider-holder {
-  height: 400px;
-  background: linear-gradient(to top right, #3b4261 0%, #212844 100%);
-  border-radius: 10px 90px 10px 10px;
-  padding: 20px;
-  color: white;
-}
-.simagar-offer-slider .left-slider {
+/* .simagar-offer-slider .left-slider {
   position: relative;
   top: -70px;
+} */
+/* End home page */
+.simagar-filter-products .categories li.category-item {
+  margin-left: 28px;
+  cursor: pointer;
+  box-shadow: 0 0 19px #0000001f;
+  padding: 8px 14px;
+  border-radius: 20px;
 }
-/* Media query */
+.simagar-filter-products .categories li.category-item.select {
+  background-color: #008ecc;
+  color: #fff;
+}
 
+/* Media query */
 @media (min-width: 576px) {
 }
 @media (min-width: 768px) {

@@ -133,8 +133,17 @@ protected function render() {
     ?>
 
     <div class="simagar-offer-slider">
+        <div class="title-holder d-flex align-items-center mb-4">
+            <i class="fal fa-medal"></i>
+            <span><?php echo esc_html($settings['title']); ?></span>
+        </div>
+
         <div class="slider-holder row">
-            <div class="col-md-12">
+            <div class="col-md-3">
+                <p><?php echo esc_html($settings['description']) ?></p>
+            </div>
+
+            <div class="col-md-9">
                 <div class="left-slider">
                     <div class="owl-carousel owl-theme" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="true" data-pagination="false" data-loop="false">
                          <?php while($offer_query->have_posts()) : $offer_query->the_post() ?>      

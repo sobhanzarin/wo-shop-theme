@@ -177,6 +177,29 @@ jQuery(document).ready(function () {
       $("#search-result-holder").hide();
     }
   });
+
+  // selected tab product widget
+  $(".category-item").click(function () {
+    var item = $(this);
+    var category_selected = item.data("product-cate");
+    var container = $(".product-item");
+    container.fadeTo(150, 0.1);
+
+    $.ajax({
+      url: SIMAGAR_DATA.ajax_url,
+      type: "post",
+      data: {
+        action: "simagar_filter_product",
+        category: category_selected,
+      },
+      success: function (data) {
+        container.html(data);
+        container.fadeTo(200, 1);
+        $(".category-item").removeClass("select");
+        item.addClass("select");
+      },
+    });
+  });
 });
 
 // 2️⃣ المنتور ادیتور
