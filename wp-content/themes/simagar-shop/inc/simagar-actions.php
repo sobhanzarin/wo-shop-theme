@@ -11,6 +11,19 @@ function simagar_after_setup_theme(){
         )
     );
 } 
+add_action('wp_head', 'simagar_post_view_count');
+function simagar_post_view_count(){
+	if(is_single()){
+		global $post;
+		$view_count = get_post_meta($post->ID, '_post_view_count', true);
+		if($view_count == ''){
+			add_post_meta($post->ID, '_post_view_count', 1);
+		}else{
+			$view_count = (int)$view_count +1;
+			update_post_meta($post->ID, '_post_view_count', $view_count); 
+		}
+	}
+}
 /**
  * Add a sidebar.
  */

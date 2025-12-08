@@ -23,7 +23,12 @@
                                     </div>
                                     <div class="item-post-meta ms-3">
                                         <i class="fa-solid fa-eye"></i>
-                                        <span>تعداد بازدید : 5</span>
+                                        <span>تعداد بازدید : 
+                                            <?php
+                                            global $post;
+                                            echo get_post_meta($post->ID, '_post_view_count', true);
+                                            ?>
+                                        </span>
                                     </div>
                                      <div class="item-post-meta ms-3">
                                         <i class="fa-solid fa-user"></i>

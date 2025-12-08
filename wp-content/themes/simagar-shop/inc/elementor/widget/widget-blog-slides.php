@@ -3,6 +3,24 @@
 use Elementor\Controls_Manager;
 
 class Simagar_Widget_Blog_Slides extends \Elementor\Widget_Base {
+    public function __construct( $data = [], $args = null ) {
+        parent::__construct( $data, $args );
+        $theme_obj = wp_get_theme();
+        $theme_version = $theme_obj->get('Version');
+        wp_enqueue_script('simple-slider-owl-carousel', SIMAGAR_THEME_URL . "assets/js/owl.carousel.min.js", null, $theme_version, true);
+
+        wp_enqueue_style('simple-slider-owl', SIMAGAR_THEME_URL . "assets/css/owl.carousel.min.css");
+        wp_enqueue_style('simple-slider-owl-default', SIMAGAR_THEME_URL . "assets/css/owl.theme.default.css");
+    }
+
+    public function get_script_depends()
+    {
+        return ['simple-slider-owl-carousel'];
+    }
+    public function get_style_depends()
+    {
+        return ['simple-slider-owl', 'simple-slider-owl-default'];
+    }
 
     public function get_name() {
         return 'blog-slides';
@@ -109,7 +127,7 @@ protected function render() {
         ]);
     ?>
      
-    <div class="owl-carousel owl-theme" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="true" data-pagination="false" data-loop="true">
+    <div class="owl-carousel owl-theme simagar-blog-slides" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="true" data-pagination="false" data-loop="true">
             <?php while($blog_query->have_posts()) : $blog_query->the_post() ?>      
                <div class="px-2">
                  <?php get_template_part("templates/post/grid"); ?>
@@ -117,7 +135,6 @@ protected function render() {
             <?php endwhile;
              wp_reset_postdata();
             ?>
-
     </div>
 
     <?php

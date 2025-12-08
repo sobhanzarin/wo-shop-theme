@@ -45,6 +45,7 @@ function simagar_register_new_widgets( $widgets_manager ) {
 	require_once( SIMAGAR_THEME_DIR . 'inc/elementor/widget/widget-category-slide.php' );
 	require_once( SIMAGAR_THEME_DIR . 'inc/elementor/widget/widget-filter-products.php' );
 	require_once( SIMAGAR_THEME_DIR . 'inc/elementor/widget/widget-blog-post-horizontal.php' );
+	require_once( SIMAGAR_THEME_DIR . 'inc/elementor/widget/widget-simple-slider-loop.php');
 
 	$widgets_manager->register( new Simagar_Widget_Auth_Btn());
 	$widgets_manager->register( new Simagar_Widget_Cart_Btn());
@@ -61,6 +62,7 @@ function simagar_register_new_widgets( $widgets_manager ) {
 	$widgets_manager->register( new Simagar_Widget_Category_Slides());
 	$widgets_manager->register( new Simagar_Widget_Filter_Products());
 	$widgets_manager->register( new Simagar_Widget_Blog_Horizontal());
+	$widgets_manager->register( new Simagar_Widget_Slider_Loop());
 
 }
 add_action( 'elementor/widgets/register', 'simagar_register_new_widgets');

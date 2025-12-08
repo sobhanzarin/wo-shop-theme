@@ -3,6 +3,24 @@
 use Elementor\Controls_Manager;
 
 class Simagar_Widget_Offer_Slider extends \Elementor\Widget_Base {
+ public function __construct( $data = [], $args = null ) {
+        parent::__construct( $data, $args );
+        $theme_obj = wp_get_theme();
+        $theme_version = $theme_obj->get('Version');
+        wp_enqueue_script('simple-slider-owl-carousel', SIMAGAR_THEME_URL . "assets/js/owl.carousel.min.js", null, $theme_version, true);
+
+        wp_enqueue_style('simple-slider-owl', SIMAGAR_THEME_URL . "assets/css/owl.carousel.min.css");
+        wp_enqueue_style('simple-slider-owl-default', SIMAGAR_THEME_URL . "assets/css/owl.theme.default.css");
+    }
+
+    public function get_script_depends()
+    {
+        return ['simple-slider-owl-carousel'];
+    }
+    public function get_style_depends()
+    {
+        return ['simple-slider-owl', 'simple-slider-owl-default'];
+    }
 
     public function get_name() {
         return 'offer-slider';

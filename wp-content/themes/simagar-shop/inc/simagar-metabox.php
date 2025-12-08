@@ -6,7 +6,21 @@ add_action('cmb2_admin_init', 'simagar_metaboxes');
 
 function simagar_metaboxes()
 {
-    $prefix = '_simagar_';
+   $prefix = '_simagar_';
+   $page_title_box = new_cmb2_box( array(
+         'id' => 'page_title_metabox',
+         'title' => 'تنظیمات عنوان برگه',
+         'object_types' => array('page',),
+         'context' => 'normal',
+         'priority' => 'high',
+         'show_names' => true,
+      ));
+   $page_title_box->add_field(array(
+        'name' => ' غیرفعال سازی عنوان صفحه',
+        'desc' => 'با فعال کردن این گزینه عنوان اختصاصی قالب غیرفعال میشود.',
+        'id' => $prefix . 'disable_title',
+        'type' => 'checkbox'
+     ));
 
    $product_box = new_cmb2_box( array(
          'id' => 'product_metabox',
@@ -15,7 +29,7 @@ function simagar_metaboxes()
          'context' => 'normal',
          'priority' => 'high',
          'show_names' => true,
-        ));
+      ));
 
    $product_box->add_field(array(
         'name' => 'پیشنهاد شگفت انگیز',

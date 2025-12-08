@@ -845,6 +845,39 @@ span.var-placeholder {
 .simagar-category-shop .category-box img {
   width: 50% !important;
 }
+.simagar-category-shop .owl-next {
+  position: absolute;
+  left: 0;
+}
+.simagar-category-shop .owl-prev {
+  position: absolute;
+  left: 39px;
+}
+.simagar-category-shop .owl-prev:hover,
+.simagar-blog-slides .owl-prev:hover,
+.simagar-blog-slides .owl-next:hover,
+.simagar-category-shop .owl-next:hover {
+  background-color: #262d4b66 !important;
+  transition: all 0.3s ease;
+}
+.simagar-category-shop .owl-prev,
+.simagar-blog-slides .owl-prev,
+.simagar-blog-slides .owl-next,
+.simagar-category-shop .owl-next {
+  background-color: #262d4b !important;
+  width: 30px;
+  height: 30px;
+  border-radius: 50% !important;
+  transition: all 0.3s ease;
+}
+.simagar-category-shop .owl-prev span,
+.simagar-blog-slides .owl-prev span,
+.simagar-blog-slides .owl-next span,
+.simagar-category-shop .owl-next span {
+  font-size: 25px !important;
+  color: #fff !important;
+  font-weight: 600;
+}
 .simagar-archiv-products .product-entry .product-thumb img,
 .simagar-filter-products img {
   border-radius: 8px !important;
@@ -1003,7 +1036,7 @@ span.title-carosel-item {
   align-items: center;
   color: #333;
   font-size: 14px;
-  margin-bottom: 14 px;
+  margin-bottom: 14px;
 }
 /* End Style sinngle-product */
 /* Style shop */
@@ -1042,7 +1075,14 @@ ul.product-categories .cat-item {
 .price_label {
   font-size: 13px;
 }
-.woocommerce-message {
+p.return-to-shop a {
+  background-color: #008ecc !important;
+  color: #fff !important;
+  padding: 14px 32px !important;
+  border-radius: 4px !important;
+}
+.woocommerce-message,
+.cart-empty {
   border-radius: 30px;
   background-color: #fff;
   line-height: 34px;
@@ -1056,13 +1096,13 @@ ul.product-categories .cat-item {
   color: #fff;
   border-radius: 5px;
 }
-.woocommerce-message::before {
+.woocommerce-message::before,
+.cart-empty::before {
   color: #37c282 !important;
 }
 /* End Style shop */
 
 /* Style Cart */
-
 .simagar-cart-item,
 .wrapp-cart-left {
   background-color: white;

@@ -1,4 +1,10 @@
-<?php if(class_exists("WooCommerce") &&  (is_singular('product')) || is_product_tag() || is_shop() || is_product_category())  :?>
+<?php 
+$post_id = get_the_ID();
+$prefix = '_simagar_';
+$disable_title = get_post_meta($post_id, $prefix . 'disable_title', true);
+
+if(!$disable_title){ ?>
+    <?php if(class_exists("WooCommerce") &&  (is_singular('product')) || is_product_tag() || is_shop() || is_product_category())  :?>
     <div class="woo-brad">
         <div class="container d-flex align-items-center">
             <i class="fal fa-location-dot ms-2"></i>
@@ -16,3 +22,5 @@
         </div>
     </div>
 <?php endif; ?>
+
+<?php }

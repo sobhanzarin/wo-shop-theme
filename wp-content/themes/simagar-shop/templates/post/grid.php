@@ -23,7 +23,7 @@
             <div class="simagar-post-footer d-flex align-items-center">
                     <div class="d-flex align-items-center ms-2">
                         <i class="fa-solid fa-list ms-1"></i>
-                        <span><?php echo get_the_category(get_the_ID())[0]->name    ?></span>
+                        <span><?php echo get_the_category(get_the_ID())[0]->name?></span>
                     </div>
                     <div class="d-flex align-items-center ms-2">
                         <i class="fa-solid fa-calendar ms-1"></i>

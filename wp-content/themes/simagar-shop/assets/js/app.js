@@ -124,31 +124,28 @@ jQuery(document).ready(function () {
   });
 
   // add to cart btns
-  $(document).on("click", ".plus, .minus", function () {
-    var input = $(this).closest(".quantity").find(".qty"),
-      value = parseFloat(input.val()),
-      max = parseFloat(input.attr("max")),
-      min = parseFloat(input.attr("min")),
-      step = input.attr("step");
-    (value && "" !== value && "NaN" !== value) || (value = 0),
-      ("" === max || "NaN" === max) && (max = ""),
-      ("" === min || "NaN" === min) && (min = 0),
-      ("any" === step ||
-        "" === step ||
-        void 0 === step ||
-        "NaN" === parseFloat(step)) &&
-        (step = 1),
-      $(this).is(".plus")
-        ? input.val(
-            max && (max == value || value > max)
-              ? max
-              : value + parseFloat(step)
-          )
-        : min && (min == value || min > value)
-        ? input.val(min)
-        : value > 0 && input.val(value - parseFloat(step)),
+  if (!document.body.classList.contains("elementor-editor-active")) {
+    $(document).on("click", ".plus, .minus", function () {
+      var input = $(this).closest(".quantity").find(".qty"),
+        value = parseFloat(input.val()),
+        max = parseFloat(input.attr("max")),
+        min = parseFloat(input.attr("min")),
+        step = input.attr("step");
+
+      if (!value || value === "NaN") value = 0;
+      if (!min || min === "NaN") min = 0;
+      if (!max || max === "NaN") max = "";
+      if (!step || step === "any" || step === "NaN") step = 1;
+
+      if ($(this).is(".plus")) {
+        input.val(max && value >= max ? max : value + parseFloat(step));
+      } else {
+        input.val(min && value <= min ? min : value - parseFloat(step));
+      }
+
       input.trigger("change");
-  });
+    });
+  }
 
   // AJAX cart mini header
   jQuery(function ($) {
@@ -198,6 +195,30 @@ jQuery(document).ready(function () {
         $(".category-item").removeClass("select");
         item.addClass("select");
       },
+    });
+  });
+
+  var carosel_swiper = $(".simagar-swiper-slider");
+  carosel_swiper.each(function () {
+    var autoplayDelay = $(this).data("autoplay");
+    var loopSlides = $(this).data("loop") === "true";
+    var slides = parseInt($(this).data("slidea"), 10) || 1;
+
+    new Swiper(this, {
+      loop: loopSlides,
+      autoplay: {
+        delay: autoplayDelay,
+      },
+      pagination: {
+        el: $(this).find(".swiper-pagination")[0],
+        clickable: true,
+      },
+      navigation: {
+        nextEl: $(this).find(".swiper-button-next")[0],
+        prevEl: $(this).find(".swiper-button-prev")[0],
+      },
+      slidesPerView: slides,
+      speed: 600,
     });
   });
 });

@@ -6,7 +6,23 @@ use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
 
 class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
+    public function __construct( $data = [], $args = null ) {
+        parent::__construct( $data, $args );
+        $theme_obj = wp_get_theme();
+        $theme_version = $theme_obj->get('Version');
+        wp_enqueue_script('simple-slider-owl-carousel', SIMAGAR_THEME_URL . "assets/js/owl.carousel.min.js", null, $theme_version, true);
 
+        wp_enqueue_style('simple-slider-owl', SIMAGAR_THEME_URL . "assets/css/owl.carousel.min.css");
+        wp_enqueue_style('simple-slider-owl-default', SIMAGAR_THEME_URL . "assets/css/owl.theme.default.css");
+    }
+    public function get_script_depends()
+    {
+        return ['simple-slider-owl-carousel'];
+    }
+    public function get_style_depends()
+    {
+        return ['simple-slider-owl', 'simple-slider-owl-default'];
+    }
     public function get_name() {
         return 'category-slides';
     }
@@ -88,7 +104,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => 'رنگ بکگراند',
                 'type' => Controls_Manager::COLOR,
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box' => 'background-color: {{VALUE}}'
                 ]
             ]
@@ -98,7 +114,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'name' => 'box_border',
                 'label' => 'حاشیه',
-                'selectors' => '{{WRAPPER}} .category-box',
+                'selector' => '{{WRAPPER}} .category-box',
             ]
         );
         $this->add_control(
@@ -112,7 +128,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                         'max' => 50,
                     ],
                 ],
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box' => 'border-radius: {{SIZE}}{{UNIT}}'
                 ]
             ]
@@ -121,7 +137,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'box_shadow',
-                'selectors' => '{{WRRAPER}} .category-box'
+                'selector' => '{{WRRAPER}} .category-box'
             ]
         );
 
@@ -131,7 +147,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'label' => 'فاصله داخلی',
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
                 ]
             ]
@@ -142,7 +158,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'label' => 'فاصله خارجی',
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT }}{{UNIT}}',
                 ],
             ]
@@ -162,7 +178,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => "رنگ عنوان",
                 'type' => Controls_Manager::COLOR,
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box .title-category span' => 'color: {{VALUE}}'
                 ]
             ]
@@ -172,7 +188,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'name' => 'title_typography',
                 'label' => 'تایپوگرافی',
-                'selectors' => '{{WRAPPER}} .category-box .title-category span',
+                'selector' => '{{WRAPPER}} .category-box .title-category span',
             ]
         );
 
@@ -191,7 +207,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => 'رنگ تعداد',
                 'type' => Controls_Manager::COLOR,
-                'selectors' => [
+                'selector' => [
                     '{{WRAPPER}} .category-box .count-product' => 'color: {{VALUE}};',
                 ],
             ]
@@ -206,6 +222,103 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'arrow_style_section',
+            [
+                'label' => "استایل پیمایش",
+                'tab' => Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'arrow_background',
+            [
+                'label' => 'رنگ بکگراند',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev,{{WRAPPER}} .simagar-category-shop .owl-next' => 'background-color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_background_hover',
+            [
+                'label' => 'رنگ هاور بکگراند',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev:hover,{{WRAPPER}} .simagar-category-shop .owl-next:hover' => 'background-color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_colors',
+            [
+                'label' => 'رنگ آیکون',
+                'type' => Controls_Manager::COLOR,
+                'selector' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev span,{{WRAPPER}} .simagar-category-shop .owl-next span' => 'color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_color_hover',
+            [
+                'label' => 'رنگ هاور آیکون',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev:hover span ,{{WRAPPER}} .simagar-category-shop .owl-next:hover span' => 'color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_border_radius',
+            [
+                'label' => 'گردی گوشه ها',
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev, {{WRAPPER}} .simagar-category-shop .owl-next' => 'border-radius: {{SIZE}}{{UNIT}} !important'
+                ]
+            ]
+        );
+    $this->add_control(
+        'arrow_size',
+        [
+            'label' => 'سایز دکمه‌ها',
+            'type' => Controls_Manager::SLIDER,
+            'range' => [
+                'px' => [
+                    'min' => 10,
+                    'max' => 200,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-prev, {{WRAPPER}} .simagar-category-shop .owl-next' => '
+                    width: {{SIZE}}{{UNIT}} !important;
+                    height: {{SIZE}}{{UNIT}} !important;
+                '
+            ],
+        ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'arrow_typography',
+                'label' => 'تایپوگرافی',
+                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-next span, {{WRAPPER}} .simagar-category-shop .owl-prev span'
+            ]
+        );
+
+    $this->end_controls_section();
+
+
 
     }
 
