@@ -875,7 +875,7 @@ span.var-placeholder {
 .simagar-blog-slides .owl-next span,
 .simagar-category-shop .owl-next span {
   font-size: 25px !important;
-  color: #fff !important;
+  color: #fff;
   font-weight: 600;
 }
 .simagar-archiv-products .product-entry .product-thumb img,
@@ -884,6 +884,13 @@ span.var-placeholder {
   width: 220px !important;
   height: auto;
 }
+/* .simagar-swiper-slider .swiper-button-next::after,
+.simagar-swiper-slider .swiper-button-prev::after {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+} */
+
 .product-entry .product-content h3 {
   font-size: 14px;
   margin: 30px 8px 0;
@@ -1470,7 +1477,6 @@ a.added_to_cart {
   background-color: #008ecc;
   color: #fff;
 }
-
 /* Media query */
 @media (min-width: 576px) {
 }

@@ -120,6 +120,109 @@ class Simagar_Widget_Slider_Loop extends \Elementor\Widget_Base {
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'setting_style_arrow',
+            [
+                'label' => 'استایل کنترل کننده ها',
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'arrow_background',
+            [
+                'label' => 'بکگراند',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev, {{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => 'background-color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        
+        $this->add_control(
+            'arrow_color',
+            [
+                'label' => 'رنگ',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-next::after, {{WRAPPER}} .simagar-swiper-slider .swiper-button-prev::after' => 'color: {{VALUE}} !important'
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_border_radius',
+            [
+                'label' => 'گردی گوشه ها',
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ]
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev, {{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => 'border-radius: {{SIZE}}{{UNIT}} !important;',
+                ]
+            ]
+        );
+        $this->add_control(
+            'arrow_size',
+            [
+                'label' => 'سایز دکمه‌ها',
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 200,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev, {{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => '
+                        width: {{SIZE}}{{UNIT}} !important;
+                        height: {{SIZE}}{{UNIT}} !important;
+                    '
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'arrow_typography',
+                'label' => 'تایپوگرافی',
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => '
+                        font-family: {{FONT_FAMILY}} !important;
+                        font-size: {{SIZE}}{{UNIT}} !important;
+                        font-weight: {{WEIGHT}} !important;
+                        line-height: {{LINE_HEIGHT}}{{UNIT}} !important;
+                        letter-spacing: {{LETTER_SPACING}}{{UNIT}} !important;
+                    ',
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev' => '
+                        font-family: {{FONT_FAMILY}} !important;
+                        font-size: {{SIZE}}{{UNIT}} !important;
+                        font-weight: {{WEIGHT}} !important;
+                        line-height: {{LINE_HEIGHT}}{{UNIT}} !important;
+                        letter-spacing: {{LETTER_SPACING}}{{UNIT}} !important;
+                    ',
+                ],
+            ]
+        );
+
+
+        $this->add_responsive_control(
+            'arrow_padding',
+            [
+                'label' => 'فاصله داخلی',
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev, {{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important'
+                ]
+            ]
+        );
+
+        $this->end_controls_section();
     
 
         }
@@ -134,16 +237,18 @@ protected function render() {
     
     <div class="swiper simagar-swiper-slider" data-slides="<?php echo esc_attr($slidesPerView) ?>" data-autoplay="<?php echo esc_attr($autoplay); ?>" data-loop="<?php echo esc_attr($loop); ?>">
         <div class="swiper-wrapper">
+             <?php if(!empty($settings['slides'])): ?>
             <?php foreach ($settings['slides'] as $slide) : ?>
                 <div class="swiper-slide">
-                    <a href="<?php echo esc_url($slide['link']['url']); ?>" class="slide-item">
-                        <img src="<?php echo esc_url($slide['image']['url']); ?>" alt="<?php echo esc_attr($slide['title'])?>">
+                    <?php $url = !empty($slide['link']['url']) ? $slide['link']['url'] : '#'; ?>
+                    <a href="<?php echo esc_url($url);?>" class="slide-item">
+                        <img src="<?php echo esc_url($slide['image']['url']); ?>" alt="<?php echo esc_attr(!empty($slide['title']) ? $slide['title'] : 'slide'); ?>">
                     </a>
                 </div>
             <?php endforeach; ?>
+            <?php endif; ?>
         </div>
          <div class="swiper-pagination"></div>
-
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>  
     </div>

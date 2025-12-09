@@ -256,8 +256,8 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => 'رنگ آیکون',
                 'type' => Controls_Manager::COLOR,
-                'selector' => [
-                    '{{WRAPPER}} .simagar-category-shop .owl-prev span,{{WRAPPER}} .simagar-category-shop .owl-next span' => 'color: {{VALUE}} !important'
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-next span, {{WRAPPER}} .simagar-category-shop .owl-prev span' => 'color: {{VALUE}} !important',
                 ]
             ]
         );
@@ -331,7 +331,7 @@ protected function render() {
     ]); 
     $is_active_navigation = ($settings['active_navigation'] === 'no') ? false : true;
     $is_active_pagination = ($settings['active_pagination'] === 'no') ? false : true;
-    $is_active_loop = ($settings['active_pagination'] === 'no') ? false : true;
+    $is_active_loop = ($settings['active_loop'] === 'no') ? false : true;
     ?>
 <div class="container">
 	<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="<?php echo $is_active_navigation ?>" data-pagination="<?php echo $is_active_pagination  ?>" data-loop="<?php echo $is_active_loop ?>">
