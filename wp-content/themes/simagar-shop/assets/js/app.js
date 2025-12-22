@@ -223,7 +223,6 @@ jQuery(document).ready(function () {
   });
 });
 
-// 2️⃣ المنتور ادیتور
 jQuery(window).on("elementor/frontend/init", function () {
   elementorFrontend.hooks.addAction(
     "frontend/element_ready/global",

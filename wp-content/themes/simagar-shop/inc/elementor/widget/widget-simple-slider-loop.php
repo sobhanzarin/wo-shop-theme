@@ -242,7 +242,7 @@ protected function render() {
                 <div class="swiper-slide">
                     <?php $url = !empty($slide['link']['url']) ? $slide['link']['url'] : '#'; ?>
                     <a href="<?php echo esc_url($url);?>" class="slide-item">
-                        <img src="<?php echo esc_url($slide['image']['url']); ?>" alt="<?php echo esc_attr(!empty($slide['title']) ? $slide['title'] : 'slide'); ?>">
+                        <img src="<?php echo esc_url($slide['image']['url']); ?>" alt="<?php echo esc_attr($slide['title'] ? $slide['title'] : 'slide'); ?>">
                     </a>
                 </div>
             <?php endforeach; ?>

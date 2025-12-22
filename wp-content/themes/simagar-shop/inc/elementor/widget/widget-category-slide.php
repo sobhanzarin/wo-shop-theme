@@ -104,40 +104,26 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => 'رنگ بکگراند',
                 'type' => Controls_Manager::COLOR,
-                'selector' => [
-                    '{{WRAPPER}} .category-box' => 'background-color: {{VALUE}}'
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box' => 'background-color: {{VALUE}}'
                 ]
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'box_border',
-                'label' => 'حاشیه',
-                'selector' => '{{WRAPPER}} .category-box',
             ]
         );
         $this->add_control(
-            'box_border_radius',
+            'box_radius',
             [
-                'label' => 'گردی گوشه ها',
-                'type' => Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 50,
-                    ],
+                'label' => 'گردی گوشه‌ها',
+                'type' => Controls_Manager::DIMENSIONS,
+                'selectors' => [
+                    '{{WRAPPER}} .category-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
-                'selector' => [
-                    '{{WRAPPER}} .category-box' => 'border-radius: {{SIZE}}{{UNIT}}'
-                ]
             ]
         );
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'box_shadow',
-                'selector' => '{{WRRAPER}} .category-box'
+                'selector' => '{{WRAPPER}} .simagar-category-shop .owl-item .category-box'
             ]
         );
 
@@ -147,8 +133,8 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'label' => 'فاصله داخلی',
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selector' => [
-                    '{{WRAPPER}} .category-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}'
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ]
             ]
         );
@@ -158,8 +144,8 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'label' => 'فاصله خارجی',
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
-                'selector' => [
-                    '{{WRAPPER}} .category-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT }}{{UNIT}}',
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -178,8 +164,8 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'label' => "رنگ عنوان",
                 'type' => Controls_Manager::COLOR,
-                'selector' => [
-                    '{{WRAPPER}} .category-box .title-category span' => 'color: {{VALUE}}'
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .title-category span' => 'color: {{VALUE}} !important'
                 ]
             ]
         );
@@ -188,7 +174,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'name' => 'title_typography',
                 'label' => 'تایپوگرافی',
-                'selector' => '{{WRAPPER}} .category-box .title-category span',
+                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .title-category span !important',
             ]
         );
 
@@ -203,12 +189,22 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
+            'title_count_color',
+            [
+                'label' => 'رنگ عنوان',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product' => 'color: {{VALUE}} !important',
+                ],
+            ]
+        );
+        $this->add_control(
             'count_color',
             [
                 'label' => 'رنگ تعداد',
                 'type' => Controls_Manager::COLOR,
-                'selector' => [
-                    '{{WRAPPER}} .category-box .count-product' => 'color: {{VALUE}};',
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product span' => 'color: {{VALUE}} !important',
                 ],
             ]
         );
@@ -217,7 +213,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'name' => 'count_typography',
                 'label' => 'تایپوگرافی',
-                'selector' => '{{WRAPPER}} .category-box .count-product span',
+                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product span !important',
             ]
         );
 
@@ -230,6 +226,189 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'tab' => Controls_Manager::TAB_STYLE
             ]
         );
+        $this->add_control(
+            'prev_arrow_horizontal_orientation',
+            [
+                'label' => 'افقی',
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => 'چپ',
+                        'icon'  => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => 'وسط',
+                        'icon'  => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => 'راست',
+                        'icon'  => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'left',
+                'selectors_dictionary' => [
+                    'left'   => 'left: 0; right: auto;',
+                    'center' => 'left: 50%; transform: translateX(-50%);',
+                    'right'  => 'right: 0; left: auto;',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev' => '{{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'prev_arrow_horizontal_offset',
+            [
+                'label' => 'موقعیت',
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => ['min' => -300, 'max' => 300],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-prev' =>
+                        'margin-left: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+        'prev_arrow_vertical_orientation',
+        [
+            'label' => 'عمودی',
+            'type' => Controls_Manager::CHOOSE,
+            'options' => [
+                'top' => [
+                    'title' => 'بالا',
+                    'icon'  => 'eicon-v-align-top',
+                ],
+                'center' => [
+                    'title' => 'وسط',
+                    'icon'  => 'eicon-v-align-middle',
+                ],
+                'bottom' => [
+                    'title' => 'پایین',
+                    'icon'  => 'eicon-v-align-bottom',
+                ],
+            ],
+            'default' => 'center',
+            'selectors_dictionary' => [
+                'top'    => 'top: 0; bottom: auto;',
+                'center' => 'top: 50%; transform: translateY(-50%);',
+                'bottom' => 'bottom: 0; top: auto;',
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-prev' => '{{VALUE}}',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+    'prev_arrow_vertical_offset',
+    [
+        'label' => 'موقعیت',
+        'type' => Controls_Manager::SLIDER,
+        'range' => [
+            'px' => ['min' => -300, 'max' => 300],
+        ],
+        'selectors' => [
+            '{{WRAPPER}} .simagar-category-shop .owl-prev' =>
+                'margin-top: {{SIZE}}{{UNIT}};',
+        ],
+    ]
+    );
+    $this->add_control(
+        'next_arrow_horizontal_orientation',
+        [
+            'label' => 'افقی',
+            'type' => Controls_Manager::CHOOSE,
+            'options' => [
+                'left' => [
+                    'title' => 'چپ',
+                    'icon'  => 'eicon-h-align-left',
+                ],
+                'center' => [
+                    'title' => 'وسط',
+                    'icon'  => 'eicon-h-align-center',
+                ],
+                'right' => [
+                    'title' => 'راست',
+                    'icon'  => 'eicon-h-align-right',
+                ],
+            ],
+            'default' => 'right',
+            'selectors_dictionary' => [
+                'left'   => 'left: 0; right: auto;',
+                'center' => 'left: 50%; transform: translateX(-50%);',
+                'right'  => 'right: 0; left: auto;',
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-next' => '{{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'next_arrow_horizontal_offset',
+        [
+            'label' => 'موقعیت',
+            'type' => Controls_Manager::SLIDER,
+            'range' => [
+                'px' => ['min' => -300, 'max' => 300],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-next' =>
+                    'margin-right: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'next_arrow_vertical_orientation',
+        [
+            'label' => 'عمودی',
+            'type' => Controls_Manager::CHOOSE,
+            'options' => [
+                'top' => [
+                    'title' => 'بالا',
+                    'icon'  => 'eicon-v-align-top',
+                ],
+                'center' => [
+                    'title' => 'وسط',
+                    'icon'  => 'eicon-v-align-middle',
+                ],
+                'bottom' => [
+                    'title' => 'پایین',
+                    'icon'  => 'eicon-v-align-bottom',
+                ],
+            ],
+            'default' => 'center',
+            'selectors_dictionary' => [
+                'top'    => 'top: 0;',
+                'center' => 'top: 50%; transform: translateY(-50%);',
+                'bottom' => 'bottom: 0;',
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-next' => '{{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'next_arrow_vertical_offset',
+        [
+            'label' => 'موقعیت',
+            'type' => Controls_Manager::SLIDER,
+            'range' => [
+                'px' => ['min' => -300, 'max' => 300],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .simagar-category-shop .owl-next' =>
+                    'margin-top: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+
+
+
+
+
 
         $this->add_control(
             'arrow_background',
@@ -312,7 +491,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             [
                 'name' => 'arrow_typography',
                 'label' => 'تایپوگرافی',
-                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-next span, {{WRAPPER}} .simagar-category-shop .owl-prev span'
+                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-next span, {{WRAPPER}} .simagar-category-shop .owl-prev span !important'
             ]
         );
 
