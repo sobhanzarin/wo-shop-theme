@@ -206,6 +206,7 @@ body.not-logged-in .breadcrumb-section {
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease;
+  z-index: 9999;
 }
 .login-modal.show {
   visibility: visible;
@@ -1297,22 +1298,14 @@ p.return-to-shop a {
   background-color: white;
   border-radius: 15px;
   padding: 20px;
-  width: 550px;
-  height: 90%;
   border: 2px solid #ffffff3b;
   border-radius: 20px;
-  margin-right: 30px;
+}
+.img-form-login img {
+  width: 100%a;
 }
 .auth-page-holder {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  margin: 0 auto;
   height: 100vh;
-}
-.auth-page-holder.background-auth {
-  background-image: url(http://localhost/theme-dev/wp-content/uploads/2025/10/Frame-30.webp);
-  max-width: 100% !important;
 }
 .woocommerce form.login,
 .woocommerce form.register {

@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<div class="auth-page-holder background-auth">
-    <div class="wrrap-auth-page d-flex flex-column justify-content-center">
+<div class="auth-page-holder background-auth row align-item-center justify-content-center">
+    <div class="wrrap-auth-page d-flex flex-column justify-content-center col-12 col-md-4">
       <div class="text-center mb-4">
           <a class="ms-4 logo-header" href="<?php echo esc_url(home_url())?>">
               <img width="<?php echo esc_attr($logo_width)?>px" src="<?php echo esc_url($logo['url']) ?>" alt="<?php echo esc_attr(get_bloginfo('name')) ?>">
@@ -120,6 +120,9 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 
     <?php do_action( 'woocommerce_after_customer_login_form' ); ?>
+    </div>
+    <div class="col-12 col-md-7 img-form-login text-center d-none d-md-flex align-items-center justify-content-center">
+      <img src="http://localhost/theme-dev/wp-content/uploads/2025/10/8487525_3919113-1.webp" alt="">
     </div>
 
 </div>
