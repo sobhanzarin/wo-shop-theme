@@ -208,12 +208,22 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+            'count_background',
+            [
+                'label' => 'پس زمینه تعداد',
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product span' => 'background-color: {{VALUE}} !important',
+                ],
+            ]
+        );
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'count_typography',
                 'label' => 'تایپوگرافی',
-                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product span !important',
+                'selectors' => '{{WRAPPER}} .simagar-category-shop .owl-item .category-box .count-product !important',
             ]
         );
 

@@ -39,6 +39,14 @@ jQuery(document).ready(function () {
     $("body").removeClass("phone-nav-open");
   });
 
+  // click btn sidebar single post
+  $("#sidebar-toggle").click(function (e) {
+    $("body").toggleClass("sidebar-open");
+  });
+  $(".phone-overlay").click(function (e) {
+    $("body").removeClass("sidebar-open");
+  });
+
   $(".phone-menu ul.sub-menu").before(
     '<i class="fal fa-angle-left sum-menu-arrow"></i>'
   );
@@ -51,17 +59,24 @@ jQuery(document).ready(function () {
   });
 
   var sticky_sid = $(".post-sidebar");
-
   if (sticky_sid.length) {
     var sideTop = sticky_sid.offset().top;
 
-    $(window).scroll(function () {
-      var currentScroll = $(window).scrollTop();
-      if (currentScroll >= sideTop) {
-        sticky_sid.css({
-          position: "fixed",
-          top: "40px",
-        });
+    $(window).on("scroll resize", function () {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        var currentScroll = $(window).scrollTop();
+
+        if (currentScroll >= sideTop) {
+          sticky_sid.css({
+            position: "sticky",
+            top: "40px",
+          });
+        } else {
+          sticky_sid.css({
+            position: "relative",
+            top: "0",
+          });
+        }
       } else {
         sticky_sid.css({
           position: "relative",
@@ -70,40 +85,37 @@ jQuery(document).ready(function () {
       }
     });
   }
+
   initOwlCarousel();
 
-  // carosel related in single post
-  // var carosel = $(".owl-carousel");
+  // scroll manage btn sidebar
+  $(window).on("scroll", function () {
+    var $btn = $(".sidebar-toggle span");
+    var footerTop = $("#footer").offset().top;
+    var btnHeight = $btn.outerHeight();
+    var windowHeight = $(window).height();
+    var scrollTop = $(window).scrollTop();
 
-  // carosel.each(function () {
-  //   var owl = $(this);
-  //   var slider_items = owl.data("slider-items");
-  //   var navigation = owl.data("navigation");
-  //   var pagination = owl.data("pagination");
-  //   var loop = owl.data("loop");
+    // موقعیت واقعی دکمه روی صفحه
+    var btnTop = scrollTop + windowHeight * 0.4;
 
-  //   owl.owlCarousel({
-  //     loop: loop,
-  //     margin: 10,
-  //     nav: navigation,
-  //     dots: pagination,
-  //     rtl: true,
-  //     responsive: {
-  //       0: {
-  //         items: 1,
-  //       },
-  //       400: {
-  //         items: 1,
-  //       },
-  //       600: {
-  //         items: 2,
-  //       },
-  //       1000: {
-  //         items: slider_items,
-  //       },
-  //     },
-  //   });
-  // });
+    // بیشترین جایی که دکمه می‌تونه بره
+    var stopPoint = footerTop - btnHeight - 10;
+
+    if (btnTop >= stopPoint) {
+      // قفل شدن قبل از فوتر
+      $btn.css({
+        position: "absolute",
+        top: stopPoint + "px",
+      });
+    } else {
+      // حالت عادی
+      $btn.css({
+        position: "fixed",
+        top: "40%",
+      });
+    }
+  });
 
   // single-product
   $(".simagar-single-product .slick-carousel").each(function () {

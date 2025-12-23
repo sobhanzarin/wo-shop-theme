@@ -33,13 +33,13 @@ if ( ! is_a( $product, WC_Product::class ) || ! $product->is_visible() ) {
 		<?php do_action( 'woocommerce_before_shop_loop_item_title' ); ?>
 	</div>
 	<div class="product-content text-center">
-		<a href="<?php esc_url(the_permalink()) ?>">
-			<h3><?php esc_html(the_title()); ?></h3>
-		</a>
+		<div class="">
+			<a href="<?php esc_url(the_permalink()) ?>">
+				<h3><?php esc_html(the_title()); ?></h3>
+			</a>
+		</div>
 		<?php do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
 		<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
-		<!-- <div class="product-hover">
-		</div> -->
 	</div>
 </div>
 </div>

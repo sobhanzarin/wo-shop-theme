@@ -85,7 +85,7 @@ class Simagar_Widget_Offer_Slider extends \Elementor\Widget_Base {
 					'2' => 'دو ستونه',
 					'3' => 'سه ستونه',
 					'4' => 'چهار ستونه',
-					'5' => 'شش ستونه',
+					'5' => 'پنج ستونه',
 				],
 				'default' => '4',
 			]
@@ -162,7 +162,6 @@ protected function render() {
                             <?php endwhile;
                             wp_reset_postdata();
                         ?>
-
                     </div>
                 </div>
             </div>

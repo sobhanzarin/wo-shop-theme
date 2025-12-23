@@ -78,17 +78,19 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 		);
 
         $this->add_control(
-			'order',
-			[
-				'type' => Controls_Manager::SELECT,
-				'label' => 'مرتب سازی',
-				'options' => [
-                    'ASC' => 'صعودی',
-                    'DESC' => 'نزولی',
+            'orderby',
+            [
+                'label' => 'مرتب‌سازی بر اساس',
+                'type' => Controls_Manager::SELECT,
+                'options' => [
+                    'date' => 'جدیدترین',
+                    'price' => 'قیمت',
+                    'popularity' => 'محبوبیت',
+                    'rand' => 'تصادفی',
                 ],
-				'default' => 'DESC',
-			]
-		);
+                'default' => 'date',
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -96,12 +98,12 @@ protected function render() {
     $settings = $this->get_settings_for_display();
     
     $products_query =  new WP_Query([
-        'post_type' => 'products',
+        'post_type' => 'product',
         'posts_per_page' => $settings['count']['size'],
-        'order' => $settings['order'],
+        'orderby' => $settings['orderby'],
         'tax_query' => [
             [
-            'taxonomy' => 'products_cat',
+            'taxonomy' => 'product_cat',
             'field' => 'term_id',
             'terms' => $settings['category'],
             ]
@@ -112,7 +114,7 @@ protected function render() {
     <div class="row">
             <?php while($products_query->have_posts()) : $products_query->the_post() ?>
             <div class="col-12 <?php echo esc_attr($settings['colums']) ?>">
-                <?php get_template_part("templates/post/grid"); ?>
+                <?php get_template_part("woocommerce/content-procuct"); ?>
             </div>
             <?php endwhile;
              wp_reset_postdata();

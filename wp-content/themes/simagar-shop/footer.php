@@ -8,7 +8,7 @@
     }
     $footer_ele = simagar_setting('footer-elementor');
     ?>
-    <footer>
+    <footer id="footer">
          <?php
         if($footer_ele) {
             $post = get_post($footer_ele);

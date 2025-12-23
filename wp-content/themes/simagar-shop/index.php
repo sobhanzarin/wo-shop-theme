@@ -1,9 +1,14 @@
 <?php get_header(); ?>
 <div class="main-page-wrapper single-page">
     <div class="content-section">
+          <div id="sidebar-toggle" class="sidebar-toggle">
+            <span>
+                <i class="fa-solid fa-list"></i>
+            </span>
+        </div>
         <div class="container">
             <div class="row">
-                <div class="simagar-sidebar-post col-12 col-md-2 mt-2">
+                <div class="simagar-sidebar-post post-sidebar-mobile col-12 col-md-2 mt-2">
                     <?php dynamic_sidebar('sidebar-blog'); ?>
                 </div>
                 <div class="col-12 col-md-10">

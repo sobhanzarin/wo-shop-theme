@@ -10,7 +10,7 @@ function simagar_metaboxes()
    $page_title_box = new_cmb2_box( array(
          'id' => 'page_title_metabox',
          'title' => 'تنظیمات عنوان برگه',
-         'object_types' => array('page',),
+         'object_types' => array('page','post'),
          'context' => 'normal',
          'priority' => 'high',
          'show_names' => true,

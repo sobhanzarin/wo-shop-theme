@@ -1,22 +1,23 @@
 <?php
     get_header(); ?>
-
-
-
-<div class="post-single-wrapper">
-
+<div class="post-single-wrapper mt-4">
     <div class="container">
+        <div id="sidebar-toggle" class="sidebar-toggle">
+            <span>
+                <i class="fa-solid fa-list"></i>
+            </span>
+        </div>
         <div class="row mb-5">
-            <div class="col-lg-9 col-md-8">
+            <div class="col-12 col-lg-9 col-md-8">
                 <div class="col-12 md-3">
-                    <div class="post-content-wrapper">
+                    <div class="post-content-wrapper position-relative">
                         <?php while ( have_posts()) : the_post();?>
                         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                            <div class="single-post-header mb-5">
+                            <div class="single-post-header mb-4 mb-md-4">
                                 <h1 class="title-single-post">
                                     <?php the_title(); ?>
                                 </h1>
-                                <div class="single-post-meta d-flex align-items mt-4">
+                                <div class="single-post-meta d-flex align-items flex-wrap flex-md-nowrap mt-4">
                                     <div class="item-post-meta ms-3">
                                       <i class="fa-solid fa-calendar-lines-pen"></i>
                                       <span>تاریخ انتشار : <?php echo get_the_date(); ?></span>
@@ -75,7 +76,7 @@
                     
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4">
+            <div class="post-wrapper-sidebar post-sidebar-mobile col-12 col-lg-3 col-md-4">
                 <div class="post-sidebar">
                     <div class="search-single-post">
                         <form action="" class="search-handler-post">
@@ -86,7 +87,7 @@
                     <div class="category-sidebar box-sidebar mt-3">
                         <span class="title-box-sidebar">دسته بندی مقالات</span>
                         <div class="list-categories mt-3">
-                            <ul>
+                            <ul class="d-flex d-md-block justify-content-between flex-wrap flex-md-nowrap">
                             <?php
                             $list_categories = get_categories();
                             ?>
@@ -100,7 +101,7 @@
                     </div>
                     <div class="social-share box-sidebar mt-3">
                         <span class="title-box-sidebar">اشتراک گذاری</span>
-                        <div class="social-share-wrapper d-flex align-items-center justify-content-center mt-3">
+                        <div class="social-share-wrapper d-flex align-items-center justify-content-start justify-content-md-center mt-3">
                             <div class="item-social-share">
                                 <i class="fa-brands fa-square-instagram"></i>
                                 <span>اینستاگرام</span>
@@ -119,9 +120,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
+    </div>  
 </div>
 
 <?php get_footer(); ?>
