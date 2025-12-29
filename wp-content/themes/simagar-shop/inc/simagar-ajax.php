@@ -15,10 +15,10 @@ function simagar_search_ajax()
                     while($the_query->have_posts()){
                     $produc = wc_get_product(get_the_ID());
                     $the_query->the_post() ?>
-                        <li class="d-flex align-items-center">
+                        <li class="d-flex align-items-center mb-3">
                             <a href="<?php esc_url(the_permalink()) ?>">
                                 <?php the_post_thumbnail(); ?>
-                                <?php the_title(); ?>
+                                <span class="title-search-result me-3"><?php the_title(); ?></span>
                             </a>
 
                         </li>

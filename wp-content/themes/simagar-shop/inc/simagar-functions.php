@@ -156,3 +156,33 @@ function allow_svg_upload($mimes) {
     return $mimes;
 }
 add_filter('upload_mimes', 'allow_svg_upload');
+
+// fields checkout costum
+add_filter('woocommerce_checkout_fields', 'simagar_remove_fildes_checkout');
+function simagar_remove_fildes_checkout($fields) {
+    unset($fields['billing']['billing_company']);
+    unset( $fields['shipping']['shipping_company'] );
+
+    return $fields;
+
+}
+add_filter('woocommerce_checkout_fields', 'simagar_required_fildes_checkout');
+function simagar_required_fildes_checkout($fields)
+{
+    $fields['billing']['billing_country']['priority'] = 20;
+    $fields['billing']['billing_state']['priority']   = 30;
+    $fields['billing']['billing_city']['priority']    = 40;
+    $fields['billing']['billing_address_1']['priority'] = 50;
+    $fields['billing']['billing_address_2']['priority'] = 60;
+    $fields['billing']['billing_postcode']['priority'] = 70;
+    $fields['billing']['billing_phone']['priority'] = 80;
+
+    return $fields;
+}
+add_filter( 'woocommerce_default_address_fields', 'reorder_address_fields_correct' );
+function reorder_address_fields_correct( $fields ) {
+    $fields['city']['priority']    = 30;
+    $fields['state']['priority']   = 20;
+
+    return $fields;
+}
