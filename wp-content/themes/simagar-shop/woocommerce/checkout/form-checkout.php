@@ -29,7 +29,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
-<form name="checkout" method="post" class="checkout simagar-checkout woocommerce-checkout d-flex gap-4"" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
+<form name="checkout" method="post" class="checkout simagar-checkout woocommerce-checkout d-flex flex-md-row flex-column gap-4 p-3"" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
 
     <?php if ( $checkout->get_checkout_fields() ) : ?>
 
@@ -54,13 +54,15 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
     <div class="simagar-checkout-left">
         <h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
-    <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
+        <div class="checkout-summary mt-4">
+            <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-    <div id="order_review" class="woocommerce-checkout-review-order">
-        <?php do_action( 'woocommerce_checkout_order_review' ); ?>
-    </div>
+            <div id="order_review" class="woocommerce-checkout-review-order">
+                <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+            </div>
 
-    <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+            <?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
+        </div>
     </div>
 </form>
 

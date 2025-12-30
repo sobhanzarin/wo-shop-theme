@@ -115,7 +115,7 @@ class Simagar_Widget_Slider_Loop extends \Elementor\Widget_Base {
             [
                 'label' => 'حلقه',
                 'type' => Controls_Manager::SWITCHER,
-                'default' => 'yes'
+                'default' => 'no'
             ]
         );
 
@@ -166,49 +166,44 @@ class Simagar_Widget_Slider_Loop extends \Elementor\Widget_Base {
                 ]
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'arrow_size',
             [
-                'label' => 'سایز دکمه‌ها',
+                'label' => 'سایز فلش',
                 'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
                 'range' => [
                     'px' => [
                         'min' => 10,
-                        'max' => 200,
+                        'max' => 100,
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev, {{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => '
-                        width: {{SIZE}}{{UNIT}} !important;
-                        height: {{SIZE}}{{UNIT}} !important;
-                    '
+                    '{{WRAPPER}} .swiper-button-next:after, {{WRAPPER}} .swiper-button-prev:after' 
+                        => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
+        $this->add_responsive_control(
+            'arrow_box_size',
             [
-                'name' => 'arrow_typography',
-                'label' => 'تایپوگرافی',
+                'label' => 'عرض و ارتفاع فلش',
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 150,
+                    ],
+                ],
                 'selectors' => [
-                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-next' => '
-                        font-family: {{FONT_FAMILY}} !important;
-                        font-size: {{SIZE}}{{UNIT}} !important;
-                        font-weight: {{WEIGHT}} !important;
-                        line-height: {{LINE_HEIGHT}}{{UNIT}} !important;
-                        letter-spacing: {{LETTER_SPACING}}{{UNIT}} !important;
-                    ',
-                    '{{WRAPPER}} .simagar-swiper-slider .swiper-button-prev' => '
-                        font-family: {{FONT_FAMILY}} !important;
-                        font-size: {{SIZE}}{{UNIT}} !important;
-                        font-weight: {{WEIGHT}} !important;
-                        line-height: {{LINE_HEIGHT}}{{UNIT}} !important;
-                        letter-spacing: {{LETTER_SPACING}}{{UNIT}} !important;
+                    '{{WRAPPER}} .swiper-button-next, {{WRAPPER}} .swiper-button-prev' => '
+                        width: {{SIZE}}{{UNIT}};
+                        height: {{SIZE}}{{UNIT}};
                     ',
                 ],
             ]
         );
-
 
         $this->add_responsive_control(
             'arrow_padding',
@@ -230,7 +225,7 @@ protected function render() {
     $settings = $this->get_settings_for_display();
 
     $autoplay  = !empty($settings['autoplay']) ? $settings['autoplay'] : 3000;
-    $loop      = $settings['loop'] === 'yes' ? 'true' : 'false';
+    $loop = $settings['loop'] === 'yes' ? 1 : 0;
     $slidesPerView = !empty($settings['slides_per_view']) ? $settings['slides_per_view'] : 1;
 
     ?>

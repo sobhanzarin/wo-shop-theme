@@ -118,23 +118,26 @@ protected function render() {
     ?>
      
   <div class="simagar-filter-products">
-    <div class="categories d-flex align-items-center justify-content-between mb-3">
+    <div class="categories d-flex align-items-center flex-md-row flex-column justify-content-between mb-3">
         <div>
             <span class="title"><?php echo esc_html($settings['title'])?></span>
         </div>
-        <ul class="d-flex align-items-center">
-            <li data-product-cate="<?php 
-            foreach($settings['category'] as $cat){
-                echo get_term_by('id', $cat, 'product_cat')->slug . ',';
-            }
-            ?>" class="category-item select">همه دسته ها</li>
-            <?php if($settings['category']) : ?>
-                <?php foreach ($settings['category'] as $cat) : ?>
-                    <li data-product-cate="<?php echo esc_html(get_term_by('id', $cat, 'product_cat')->slug)?>" class="category-item"><?php echo esc_html(get_term_by('id', $cat, 'product_cat')->name)?></li>
-            
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </ul>
+        <div class="category-row">
+            <ul class="d-flex align-items-center">
+                <li data-product-cate="<?php 
+                foreach($settings['category'] as $cat){
+                    echo get_term_by('id', $cat, 'product_cat')->slug . ',';
+                }
+                ?>" class="category-item select">همه دسته ها</li>
+                <?php if($settings['category']) : ?>
+                    <?php foreach ($settings['category'] as $cat) : ?>
+                        <li data-product-cate="<?php echo esc_html(get_term_by('id', $cat, 'product_cat')->slug)?>" class="category-item"><?php echo esc_html(get_term_by('id', $cat, 'product_cat')->name)?></li>
+                
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
+        </div>
+       
     </div>
     <div class="row product-item ">
         <?php while($product_query->have_posts()) : $product_query->the_post();?>

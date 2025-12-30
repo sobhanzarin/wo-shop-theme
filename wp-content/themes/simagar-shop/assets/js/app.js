@@ -213,14 +213,12 @@ jQuery(document).ready(function () {
   var carosel_swiper = $(".simagar-swiper-slider");
   carosel_swiper.each(function () {
     var autoplayDelay = $(this).data("autoplay");
-    var loopSlides = $(this).data("loop") === "true";
-    var slides = parseInt($(this).data("slidea"), 10) || 1;
+    var loopSlides = $(this).data("loop") === true ?? false;
+    var slides = parseInt($(this).data("slides"), 10) || 1;
 
     new Swiper(this, {
       loop: loopSlides,
-      autoplay: {
-        delay: autoplayDelay,
-      },
+      autoplay: autoplayDelay ? { delay: autoplayDelay } : false,
       pagination: {
         el: $(this).find(".swiper-pagination")[0],
         clickable: true,
@@ -230,7 +228,7 @@ jQuery(document).ready(function () {
         prevEl: $(this).find(".swiper-button-prev")[0],
       },
       slidesPerView: slides,
-      speed: 600,
+      speed: 700,
     });
   });
 });
