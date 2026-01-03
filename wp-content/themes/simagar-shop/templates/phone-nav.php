@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="mobile-navigation">
+<!-- <div class="mobile-navigation">
     <div class="box-navigation d-flex justify-content-between align-items-center">
         <div class="mobile-bottom-navitem">
             <a class="d-flex flex-column align-items-center gap-2" href="">
@@ -48,5 +48,5 @@
         </div>
     </div>
 
-</div>
+</div> -->
 <div class="phone-overlay"></div>

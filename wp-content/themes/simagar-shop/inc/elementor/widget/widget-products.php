@@ -39,7 +39,7 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 					'no' => [
 						'min' => 1,
 						'max' => 100,
-                        'steo' => 1
+                        'step' => 1
 					],
 				],
 				'default' => [
@@ -49,7 +49,7 @@ class Simagar_Widget_Products extends \Elementor\Widget_Base {
 		);
 
         $this->add_control(
-			'colums',
+			'columns',
 			[
 				'type' => Controls_Manager::SELECT,
 				'label' => 'تعداد ستون',
@@ -113,8 +113,8 @@ protected function render() {
      
     <div class="row">
             <?php while($products_query->have_posts()) : $products_query->the_post() ?>
-            <div class="col-12 <?php echo esc_attr($settings['colums']) ?>">
-                <?php get_template_part("woocommerce/content-procuct"); ?>
+            <div class="col-12 <?php echo esc_attr($settings['columns']) ?>">
+                <?php get_template_part("woocommerce/content-product"); ?>
             </div>
             <?php endwhile;
              wp_reset_postdata();

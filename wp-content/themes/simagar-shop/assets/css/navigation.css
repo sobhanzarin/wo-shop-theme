@@ -433,12 +433,12 @@ span.phone-nav-toggle i {
 
 .phone-menu {
   width: 275px;
-  height: 71%;
+  height: 80%;
   background-color: #fff;
   position: fixed;
-  top: 13%;
+  top: auto;
   left: auto;
-  bottom: auto;
+  bottom: 0;
   right: 20px;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.089) 4px 0px 10px;

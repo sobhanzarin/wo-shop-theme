@@ -6,7 +6,7 @@
                     <?php the_post_thumbnail(); ?>
                 </a>
             </div>
-            <div class="simagar-post-content">
+            <div class="simagar-post-content d-flex flex-column justify-content-around">
                 <div class="post-title">
                     <h3>
                         <a href="<?php the_permalink(); ?>">

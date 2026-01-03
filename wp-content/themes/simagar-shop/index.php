@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="main-page-wrapper single-page">
     <div class="content-section">
-          <div id="sidebar-toggle" class="sidebar-toggle">
+        <div id="sidebar-toggle" class="sidebar-toggle">
             <span>
                 <i class="fa-solid fa-list"></i>
             </span>

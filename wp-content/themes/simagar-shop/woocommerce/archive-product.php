@@ -55,6 +55,11 @@ $terms = get_terms([
 	<div class="container">
 		<?php if(woocommerce_product_loop()) :  ?>
 		<div class="row">
+			<div id="sidebar-toggle" class="sidebar-toggle">
+					<span>
+						<i class="fa-solid fa-list"></i>
+					</span>
+        	</div>
 			<div class="d-flex align-items-center justify-content-end">
 						<?php 
 						/**
@@ -70,7 +75,7 @@ $terms = get_terms([
 						?>
 
 					</div>
-			<div class="sidebar-shop col-12 col-md-3">
+			<div class="sidebar-shop post-sidebar-mobile col-12 col-md-3">
 				<?php dynamic_sidebar('sidebar-shop') ?>
 			</div>
 			<div class="col-12 col-md-9">

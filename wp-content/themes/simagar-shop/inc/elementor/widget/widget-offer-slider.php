@@ -154,7 +154,7 @@ protected function render() {
         <div class="slider-holder row">
             <div class="col-md-12">
                 <div class="left-slider">
-                    <div class="owl-carousel owl-theme" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="true" data-pagination="false" data-loop="false">
+                    <div class="owl-carousel owl-theme" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="false" data-pagination="false" data-loop="false">
                          <?php while($offer_query->have_posts()) : $offer_query->the_post() ?>      
                             <div class="px-2">
                                 <?php get_template_part("woocommerce/content-product"); ?>

@@ -12,7 +12,7 @@ if ($attachment_ids) {
     ?>
 	<div class="simagar-product-thumbs">
 		<div class="simagar-product-meta">
-			<ul>
+			<ul class="d-flex d-md-block gap-3">
 				<li data-bs-toggle="tooltip" data-bs-title="اشتراک گذاری" data-bs-placement="right">
 					<button href=""><i class="fal fa-share-nodes"></i></button>
 				</li>

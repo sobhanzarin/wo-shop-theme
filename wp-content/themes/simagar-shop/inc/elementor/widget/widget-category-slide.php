@@ -272,7 +272,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
                 'label' => 'موقعیت',
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
-                    'px' => ['min' => -300, 'max' => 300],
+                    'px' => ['min' => -500, 'max' => 500],
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .simagar-category-shop .owl-prev' =>
@@ -318,7 +318,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
         'label' => 'موقعیت',
         'type' => Controls_Manager::SLIDER,
         'range' => [
-            'px' => ['min' => -300, 'max' => 300],
+            'px' => ['min' => -500, 'max' => 500],
         ],
         'selectors' => [
             '{{WRAPPER}} .simagar-category-shop .owl-prev' =>
@@ -362,7 +362,7 @@ class Simagar_Widget_Category_Slides extends \Elementor\Widget_Base {
             'label' => 'موقعیت',
             'type' => Controls_Manager::SLIDER,
             'range' => [
-                'px' => ['min' => -300, 'max' => 300],
+                'px' => ['min' => -500, 'max' => 500],
             ],
             'selectors' => [
                 '{{WRAPPER}} .simagar-category-shop .owl-next' =>
@@ -523,7 +523,7 @@ protected function render() {
     $is_active_loop = ($settings['active_loop'] === 'no') ? false : true;
     ?>
 <div class="container">
-	<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="<?php echo $is_active_navigation ?>" data-pagination="<?php echo $is_active_pagination  ?>" data-loop="<?php echo $is_active_loop ?>">
+	<div class="owl-carousel owl-theme simagar-category-shop mb-3" data-slider-items="<?php echo $settings['colums'] ?>" data-navigation="true" data-pagination="false" data-loop="<?php echo $is_active_loop ?>">
 		<?php foreach($terms as $term): ?>
 			<?php if($term->slug === 'uncategorized') continue; ?>
 			<?php 
