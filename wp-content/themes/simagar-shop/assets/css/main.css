@@ -346,6 +346,9 @@ span.count-cart {
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
   padding: 1.9rem;
 }
+.post-wrapper-sidebar .item-social-share a {
+  font-size: 14px;
+}
 .sidebar-toggle {
   display: none;
 }
@@ -1966,7 +1969,6 @@ span.woosw-popup-close {
     font-size: 18px;
     line-height: 30px;
   }
-
   .woosc_table th a[draggable] {
     font-size: 12px !important;
     display: block;

@@ -164,7 +164,7 @@ if( class_exists( 'CSF' ) ) {
     'title' => 'رنگ اصلی سایت',
     'default' => '#008ECC',
     'output' => array(
-      'color' => '.title_category, span.product_meta_item, .icon-header, .phone-header, .single-post-meta .item-post-meta i, .btn-search-post i, .simagar-profile-badges .badges-item i, .btn-product-search-result a, .simagar-offer-slider .title-holder i, .btn-post-horizontal',
+      'color' => '.title_category, span.product_meta_item, .icon-header, .phone-header, .single-post-meta .item-post-meta i, .btn-search-post i, .simagar-profile-badges .badges-item i, .btn-product-search-result a, .simagar-offer-slider .title-holder i, .btn-post-horizontal, .post-wrapper-sidebar .item-social-share i',
       'background-color' => '.auth-holder, span.count-category, .simagar-pagination .page-numbers.current, .simagar-pagination li a:hover, .widget_search #searchsubmit, a.woosw-continue',
       'border-color' => '.simagar-woocommerce-navigation ul li.is-active',
     )

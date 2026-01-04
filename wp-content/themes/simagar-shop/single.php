@@ -102,17 +102,23 @@
                     <div class="social-share box-sidebar mt-3">
                         <span class="title-box-sidebar">اشتراک گذاری</span>
                         <div class="social-share-wrapper d-flex align-items-center justify-content-start justify-content-md-center mt-3">
-                            <div class="item-social-share">
-                                <i class="fa-brands fa-square-instagram"></i>
-                                <span>اینستاگرام</span>
+                            <div class="item-social-share ms-2">
+                                <a href="https://www.instagram.com/"  target="_blank"  onclick="navigator.clipboard.writeText('<?php the_permalink(); ?>')"  data-tooltip="لینک کپی شد، در اینستاگرام به اشتراک بگذار"> 
+                                    <i class="fa-brands fa-instagram"></i>
+                                    اینستاگرام
+                                </a>
                             </div>
-                             <div class="item-social-share">
-                                <i class="fa-brands fa-square-instagram"></i>
-                                <span>واتساپ</span>
+                             <div class="item-social-share ms-2">
+                                <a href="https://api.whatsapp.com/send?text=<?php the_title(); ?>%20<?php the_permalink(); ?>" target="_blank" data-tooltip="اشتراک گذاری در واتساپ">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                     واتساپ
+                                </a>
                             </div>
-                             <div class="item-social-share">
-                                <i class="fa-brands fa-square-instagram"></i>
-                                <span>تلگرام</span>
+                             <div class="item-social-share ms-2">  
+                                <a href="https://telegram.me/share/url?url=<?php the_permalink() ?>&text=<?php the_title(); ?>" target="_blank" data-tooltip="اشتراک گذاری در تلگرام">
+                                <i class="fa-brands fa-telegram"></i>
+                                تلگرام
+                                </a>
                             </div>
                         </div>
                     </div>

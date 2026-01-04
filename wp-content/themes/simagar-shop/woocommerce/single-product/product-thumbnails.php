@@ -13,9 +13,9 @@ if ($attachment_ids) {
 	<div class="simagar-product-thumbs">
 		<div class="simagar-product-meta">
 			<ul class="d-flex d-md-block gap-3">
-				<li data-bs-toggle="tooltip" data-bs-title="اشتراک گذاری" data-bs-placement="right">
+				<!-- <li data-bs-toggle="tooltip" data-bs-title="اشتراک گذاری" data-bs-placement="right">
 					<button href=""><i class="fal fa-share-nodes"></i></button>
-				</li>
+				</li> -->
 				<li data-bs-toggle="tooltip" data-bs-title="افزودن به علاقمندی" data-bs-placement="right">
 					<button href="javascript:void(0);" class="woosw-btn woosw-btn-<?php echo get_the_ID(); ?> woosw-btn-has-icon woosw-btn-icon-only" data-id="<?php echo get_the_ID(); ?>">
 					<span class="woosw-btn-icon"></span></button>
