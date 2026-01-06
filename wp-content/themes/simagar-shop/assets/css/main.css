@@ -1413,6 +1413,17 @@ p.return-to-shop a {
 .simagar-mini-cart .woocommerce-mini-cart__buttons a.checkout {
   background-color: #008ecc !important;
 }
+.woocommerce-thankyou-order-received,
+.woocommerce-customer-details .woocommerce-column__title {
+  margin-bottom: 20px;
+}
+.woocommerce-customer-details address {
+  padding: 15px !important;
+  line-height: 26px !important;
+}
+.woocommerce-order-details__title {
+  margin: 20px 0;
+}
 /* End dropdown mini cart */
 
 /* End Style Cart */
